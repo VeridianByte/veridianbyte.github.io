@@ -1,4 +1,4 @@
-const VERSION = "1771240311974";const preCache = ["/VeridianByte/images/taichi.png","/VeridianByte/images/banner.webp","/VeridianByte/css/loader.css","/VeridianByte/css/style.css","/VeridianByte/js/script.js"];const cacheDomain = [
+const VERSION = "1771240740514";const preCache = ["/VeridianByte/images/taichi.png","/VeridianByte/images/banner.webp","/VeridianByte/css/loader.css","/VeridianByte/css/style.css","/VeridianByte/js/script.js"];const cacheDomain = [
   "fonts.googleapis.com",
   "npm.webcache.cn",
   "unpkg.com",
