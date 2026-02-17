@@ -7,9 +7,9 @@
   
   
   
-  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://veridianbyte.github.io';</script>
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://veridianbyte.github.io';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   <title>
-    归档: 2026 | (≧∇≦)ﾉ 飛鳥じんじん
+    目录: 生活 | (≧∇≦)ﾉ 飛鳥じんじん
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
@@ -20,7 +20,7 @@
     <meta name="description" content="A developer&#39;s notebook. (❁´◡&#96;❁)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="(≧∇≦)ﾉ 飛鳥じんじん">
-<meta property="og:url" content="https://veridianbyte.github.io/archives/2026/index.html">
+<meta property="og:url" content="https://veridianbyte.github.io/categories/%E7%94%9F%E6%B4%BB/index.html">
 <meta property="og:site_name" content="(≧∇≦)ﾉ 飛鳥じんじん">
 <meta property="og:description" content="A developer&#39;s notebook. (❁´◡&#96;❁)">
 <meta property="og:locale" content="zh_CN">
@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="/css/style.css">
 
   <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+      <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css" integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz+YI" crossorigin="anonymous">
     
 <script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
 
@@ -125,6 +126,52 @@
       <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
       <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
   </nav>
+    <nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
+            <li data-value="zh-CN" role="option" class="selected" aria-selected="true">简体中文</li>
+            <li data-value="en" role="option" aria-selected="false">English</li>
+        </ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};
+              langMap['zh-CN'] = '/categories/生活/';
+              langMap['en'] = '/en/categories/生活/';
+            selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav>
 </div>
 <header id="header" aria-label="Site header">
       <picture>
@@ -137,10 +184,10 @@
   <div id="header-outer">
     <div id="header-title">
           <span id="logo">
-            <h1 data-aos="slide-up">归档</h1>
+            <h1 data-aos="slide-up">分类</h1>
           </span>
         <h2 id="subtitle-wrap" data-aos="slide-down">
-            <span id="subtitle">2026</span>
+            <span id="subtitle">生活</span>
         </h2>
     </div>
   </div>
@@ -179,25 +226,19 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">0</div>
+    <div class="sidebar-state-number">1</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">0</div>
+    <div class="sidebar-state-number">1</div>
   </div>
 </div>
 <div class="sidebar-social" >
     <div class="icon-github sidebar-social-icon">
       <a href=https://github.com/VeridianByte itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
     </div>
-    <div class="icon-twitter sidebar-social-icon">
-      <a href=https://x.com/JiahuiBi itemprop="url" target="_blank" aria-label="twitter" rel="noopener nofollow noreferrer"></a>
-    </div>
     <div class="icon-bilibili sidebar-social-icon">
       <a href=https://space.bilibili.com/688602329 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
-    </div>
-    <div class="icon-steam sidebar-social-icon">
-      <a href=https://steamcommunity.com/profiles/76561199019094102/ itemprop="url" target="_blank" aria-label="steam" rel="noopener nofollow noreferrer"></a>
     </div>
 </div>
 <div class="sidebar-menu">
@@ -234,29 +275,60 @@
     </div>
   </div>
   <div class="sidebar-widget">
-      
-      
+        <div class="widget-wrapper">
+    <div class="widget-wrap" data-aos="fade-up">
+      <h3 class="widget-title">标签</h3>
+      <div class="widget">
+        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag" title="日记">日记</a></li></ul>
+      </div>
+    </div>
+  </div>
+
+        <div class="widget-wrapper">
+    <div class="widget-wrap" data-aos="fade-up">
+      <h3 class="widget-title">标签云</h3>
+      <div class="widget tagcloud">
+        <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 10px;">日记</a>
+      </div>
+    </div>
+  </div>
+
+        <div class="widget-wrapper">
+    <div class="widget-wrap" data-aos="fade-up">
+      <h3 class="widget-title">归档</h3>
+      <div class="widget">
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9999/09/">九月 9999</a></li></ul>
+      </div>
+    </div>
+  </div>
+
   </div>
   </div>
 </aside>
 
           <section id="main" aria-label="Main content"><div class="archives-outer-wrap" data-aos="fade-up">
     <div class="tag-wrap">
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/">日记</a>
+    </div>
 </div>
 <div class="category-wrap">
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+    </div>
 </div>
         <section class="archives-wrap" data-aos="fade-up">
           <div class="archive-year-wrap">
-            <a href="/archives/2026" class="archive-year">2026</a>
+            <a href="/archives/9999" class="archive-year">9999</a>
           </div>
           <ul>
             <li class="archive-article">
   <div class="archive-article-date">
     <span>
-      <time class="dt-published" datetime="2026-02-15T17:13:45.078Z" itemprop="datePublished">02-16</time>
+      <time class="dt-published" datetime="9999-09-09T01:09:09.000Z" itemprop="datePublished">09-09</time>
     </span>
   </div>
-    <a class="archive-article-title" href="/2026/02/16/hello-world/">Hello World</a>
+    <a class="archive-article-title" href="/9999/09/09/hello-world/">Hello World</a>
 </li>
 
           </ul>
@@ -282,7 +354,7 @@
       </div>
       <div>
         <span class="icon-brush"></span>
-        75
+        254
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
         00:01
@@ -317,25 +389,19 @@
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">0</div>
+    <div class="sidebar-state-number">1</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">0</div>
+    <div class="sidebar-state-number">1</div>
   </div>
 </div>
 <div class="sidebar-social" >
     <div class="icon-github sidebar-social-icon">
       <a href=https://github.com/VeridianByte itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
     </div>
-    <div class="icon-twitter sidebar-social-icon">
-      <a href=https://x.com/JiahuiBi itemprop="url" target="_blank" aria-label="twitter" rel="noopener nofollow noreferrer"></a>
-    </div>
     <div class="icon-bilibili sidebar-social-icon">
       <a href=https://space.bilibili.com/688602329 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
-    </div>
-    <div class="icon-steam sidebar-social-icon">
-      <a href=https://steamcommunity.com/profiles/76561199019094102/ itemprop="url" target="_blank" aria-label="steam" rel="noopener nofollow noreferrer"></a>
     </div>
 </div>
 <div class="sidebar-menu">

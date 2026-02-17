@@ -130,14 +130,8 @@
 .icon-github:before {
   content: '\e619';
 }
-.icon-twitter:before {
-  content: '\e62a';
-}
 .icon-bilibili:before {
   content: '\e603';
-}
-.icon-steam:before {
-  content: '\e624';
 }
 .sidebar-toc-btn:before {
   font-family: 'iconfont';

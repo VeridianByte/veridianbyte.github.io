@@ -140,14 +140,8 @@
 .icon-github:before {
   content: '\f09b';
 }
-.icon-twitter:before {
-  content: '\e61b';
-}
 .icon-bilibili:before {
   content: '\e3d9';
-}
-.icon-steam:before {
-  content: '\f1b6';
 }
 .sidebar-toc-btn:before {
   font-family: var(--font-icon);

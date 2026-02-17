@@ -6,7 +6,7 @@
     <description>在世界的边缘你我又会遇见什么 。 。 。</description>
     <language>zh-CN</language>
     <copyright>All rights reserved 2026, 白菜</copyright>
-    <lastBuildDate>Tue, 17 Feb 2026 10:06:54 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 17 Feb 2026 12:55:26 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://veridianbyte.github.io/images/feed-icon.png</url>
@@ -16,14 +16,14 @@
     <atom:link href="https://veridianbyte.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Hello World</title>
-      <link>https://veridianbyte.github.io/2026/02/16/hello-world/</link>
-      <description>
-        <![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for]]>
-      </description>
+      <link>https://veridianbyte.github.io/9999/09/09/hello-world/</link>
+      <description>我们所经历的日常..</description>
       <author>白菜</author>
-      <pubDate>Sun, 15 Feb 2026 17:13:45 GMT</pubDate>
+      <category domain="https://veridianbyte.github.io/categories/%E7%94%9F%E6%B4%BB/">生活</category>
+      <category domain="https://veridianbyte.github.io/tags/%E6%97%A5%E8%AE%B0/">日记</category>
+      <pubDate>Thu, 09 Sep 9999 01:09:09 GMT</pubDate>
       <content:encoded>
-        <![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]>
+        <![CDATA[<p>我们所经历的日常…</p><span id="more"></span><p>日记从上到下，从新到旧</p><h2 id="二零二六年二月"><a class="markdownIt-Anchor" href="#二零二六年二月"></a> 二零二六年二月</h2><h3 id="十七日"><a class="markdownIt-Anchor" href="#十七日"></a> 十七日</h3><p>  花了几天的时间终于差不多将网站整理好了，加入了许多自己喜欢的元素。至于动机，总之是想要记录记录自己走过的路。说起来我是一个不记事的人，有啥事情转眼就忘了，昨天在做什么今天差不多就快忘记了，一周前的事情基本上就已经记不住了。有时候我常常觉得自己是个没有过去的人，在学过强化学习后与这个算法产生了深深的共鸣，你说，我每天是不是也在做马尔可夫最优决策？</p><blockquote><p><a href="https://zh.wikipedia.org/zh-cn/%E9%A6%AC%E5%8F%AF%E5%A4%AB%E6%B1%BA%E7%AD%96%E9%81%8E%E7%A8%8B">马尔可夫决策过程</a></p></blockquote><p>  最近在学习树莓派的相关知识，为了点屏学习学习了framebuffer相关知识，还看了看LVGL，光是搞清楚这些东西就花了不少时间。感觉放假还在昨天，悲~</p>]]>
       </content:encoded>
     </item>
   </channel>
