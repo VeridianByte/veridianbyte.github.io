@@ -2607,8 +2607,6 @@ pre .emphasis {
   box-shadow: var(--shadow-card-hover);
   z-index: 999;
   cursor: var(--cursor-pointer) !important;
-  left: 30px;
-  right: auto;
 }
 .sidebar-top .sidebar-top-taichi {
   width: 48px;
