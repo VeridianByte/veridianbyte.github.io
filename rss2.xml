@@ -6,7 +6,7 @@
     <description>在世界的边缘你我又会遇见什么 。 。 。</description>
     <language>zh-CN</language>
     <copyright>All rights reserved 2026, 白菜</copyright>
-    <lastBuildDate>Tue, 24 Feb 2026 05:53:49 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 09 Sep 9999 01:09:09 GMT</lastBuildDate>
     <generator>Hexo</generator>
     <image>
       <url>https://veridianbyte.github.io/images/feed-icon.png</url>
@@ -16,12 +16,12 @@
     <atom:link href="https://veridianbyte.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>《日常》</title>
-      <link>https://veridianbyte.github.io/9999/09/09/diary/</link>
+      <link>https://veridianbyte.github.io/6666/06/06/diary/</link>
       <description>我们所经历的日常..</description>
       <author>白菜</author>
       <category domain="https://veridianbyte.github.io/categories/%E7%94%9F%E6%B4%BB/">生活</category>
       <category domain="https://veridianbyte.github.io/tags/%E6%97%A5%E8%AE%B0/">日记</category>
-      <pubDate>Thu, 09 Sep 9999 01:09:09 GMT</pubDate>
+      <pubDate>Tue, 05 Jun 6666 22:06:06 GMT</pubDate>
       <content:encoded>
         <![CDATA[<p>我们所经历的日常…</p><span id="more"></span><p>日记从上到下，从新到旧</p><h1 id="二零二六年二月"><a class="markdownIt-Anchor" href="#二零二六年二月"></a> 二零二六年二月</h1><h2 id="十七日"><a class="markdownIt-Anchor" href="#十七日"></a> 十七日</h2><p>  花了几天的时间终于差不多将网站整理好了，加入了许多自己喜欢的元素。至于动机，总之是想要记录记录自己走过的路。说起来我是一个不记事的人，有啥事情转眼就忘了，昨天在做什么今天差不多就快忘记了，一周前的事情基本上就已经记不住了。有时候我常常觉得自己是个没有过去的人，在学过强化学习后与这个算法产生了深深的共鸣，你说，我每天是不是也在做马尔可夫最优决策？</p><blockquote><p><a href="https://zh.wikipedia.org/zh-cn/%E9%A6%AC%E5%8F%AF%E5%A4%AB%E6%B1%BA%E7%AD%96%E9%81%8E%E7%A8%8B">马尔可夫决策过程</a></p></blockquote><p>  最近在学习树莓派的相关知识，为了点屏学习学习了framebuffer相关知识，还看了看LVGL，光是搞清楚这些东西就花了不少时间。感觉放假还在昨天，悲~</p><h2 id="二十三日"><a class="markdownIt-Anchor" href="#二十三日"></a> 二十三日</h2><p>  过年忙来忙去，一转眼又得开学了，终究还是得面对各种搁置已久的事情。今天花了一点时间参考网上的教程，利用obsidian同步hexo博客，写博客还是方便了不少。</p><blockquote><p><a href="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/">hexo-reimu主题联动obsidian更新博客</a></p></blockquote><p>  今天还学到个小技巧，原来键盘alt+a也能截屏。<br />  写博客时若直接写可执行文件名居然会被解析为超链接，今天写的<code>deploy.s</code>在网页端一直是超链接，一时还搞不清楚为什么，折腾半天才知道是这样原因！！！</p>]]>
       </content:encoded>
