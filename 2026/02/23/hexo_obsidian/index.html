@@ -294,7 +294,7 @@
 <h3 id="配置shell-commands"><a class="markdownIt-Anchor" href="#配置shell-commands"></a> 配置Shell commands</h3>
 <p>选择<code>New shell command</code>，添加<code>start deploy.sh</code>和<code>start server.sh</code><br />
 <img src="file-20260224000959106.png" alt="" /><br />
-在my-blog目录中添加<code>deploy.sh</code>与<code>server.sh</code></p>
+在my-blog根目录中添加<code>deploy.sh</code>与<code>server.sh</code></p>
 <figure class="highlight bash"><figcaption><span>deploy.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成静态文件</span></span><br><span class="line">hexo clean &amp;&amp; hexo generate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署到 GitHub Pages</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><figcaption><span>server.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成静态文件</span></span><br><span class="line">hexo clean &amp;&amp; hexo generate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开本地服务</span></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 <p>在命令面板中搜索<code>start deploy.s</code>h或<code>start server.sh</code>即可同步GitHub或本地预览<br />
@@ -428,7 +428,7 @@
       </div>
       <div>
         <span class="icon-brush"></span>
-        863
+        864
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
         00:05
