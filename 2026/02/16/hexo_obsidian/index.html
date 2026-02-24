@@ -269,24 +269,24 @@
 选择适合版本的git <a target="_blank" rel="noopener" href="https://git-scm.com/install/windows">https://git-scm.com/install/windows</a><br />
 安装完成后，在git中配置你的账户：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">git config --global user.email &quot;email@example.com&quot;</span><br><span class="line"># 其中Your Name和email@example.com替换成github账户名和邮箱</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;Your Name&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;email@example.com&quot;</span></span><br><span class="line"><span class="comment"># 其中Your Name和email@example.com替换成github账户名和邮箱</span></span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>Node.js安装<br />
 在 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a> 选择Windows Installer（.msi）根据个人需要调整安装选项。<br />
 安装完成后在终端中输入：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 <p>应当正常显示node与npm版本。</p>
 <h1 id="安装hexo"><a class="markdownIt-Anchor" href="#安装hexo"></a> 安装Hexo</h1>
 <p>在终端中输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init my-blog/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init my-blog/</span><br></pre></td></tr></table></figure>
 <p>在<code>my-blog</code>目录下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
 <p>这里也可以直接安装其他主题，根据你想安装的主题而定：<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo-Themes</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-theme-xxxx --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-theme-xxxx --save</span><br></pre></td></tr></table></figure>
 <p>安装完成后即可正常使用Hexo。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 <h1 id="obsidian配置"><a class="markdownIt-Anchor" href="#obsidian配置"></a> obsidian配置</h1>
 <ol>
 <li>在 <a target="_blank" rel="noopener" href="https://obsidian.md/download">https://obsidian.md/download</a> 下载并安装obsidian<br />
@@ -300,12 +300,10 @@
 <ul>
 <li>设置<code>Shell commands</code>，选择<code>New shell command</code>，添加<code>start deploy.sh</code>和<code>start server.sh</code><br />
 <img src="file-20260224000959106.png" alt="" /><br />
-在my-blog目录中添加<code>deploy.sh</code>与<code>server.sh</code><br />
-<code>deploy.sh</code>：</li>
+在my-blog目录中添加<code>deploy.sh</code>与<code>server.sh</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 生成静态文件</span><br><span class="line">hexo clean &amp;&amp; hexo generate</span><br><span class="line"></span><br><span class="line"># 部署到 GitHub Pages</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<p><code>server.sh</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 生成静态文件</span><br><span class="line">hexo clean &amp;&amp; hexo generate</span><br><span class="line"></span><br><span class="line"># 打开本地服务</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>deploy.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成静态文件</span></span><br><span class="line">hexo clean &amp;&amp; hexo generate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署到 GitHub Pages</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>server.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成静态文件</span></span><br><span class="line">hexo clean &amp;&amp; hexo generate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开本地服务</span></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 <p>在命令面板中搜索<code>start deploy.s</code>h或<code>start server.sh</code>即可同步GitHub或本地预览<br />
 <img src="file-20260224114840209.png" alt="" /></p>
 <ul>
@@ -434,7 +432,7 @@
       </div>
       <div>
         <span class="icon-brush"></span>
-        850
+        848
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
         00:05
