@@ -416,14 +416,9 @@ body [data-aos='zoom-in'] {
   font-family: 'iconfont';
   content: '\e63a';
 }
-.icon-taichi {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("../images/taichi.svg");
+.icon-taichi:before {
+  font-family: 'iconfont';
+  content: '\e62b';
 }
 .icon-weixin:before {
   font-family: 'iconfont';
