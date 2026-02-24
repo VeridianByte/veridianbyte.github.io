@@ -77,16 +77,6 @@ window.throttle = (func, limit) => {
   _$("#sub-nav").append(themeButton);
 
   const osMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  
-  // Function to update theme-aware icons
-  function updateThemeIcons(isDark) {
-    document.querySelectorAll("img.theme-icon").forEach((img) => {
-      if (img.dataset.lightSrc && img.dataset.darkSrc) {
-        img.src = isDark ? img.dataset.darkSrc : img.dataset.lightSrc;
-      }
-    });
-  }
-  
   function setTheme(config) {
     const isAuto = config === "auto";
     const isDark = config === "true" || (isAuto && osMode);
@@ -101,8 +91,6 @@ window.throttle = (func, limit) => {
         ? "sun"
         : "circle-half-stroke"
     }-btn`;
-
-    updateThemeIcons(isDark);
 
     document.body.dispatchEvent(
       new CustomEvent("reimu:theme-set", {
