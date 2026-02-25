@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>ヾ(≧▽≦*)o 飛 鳥 じ ん じ ん</title>
+    <title>ヾ(≧▽≦*)o 飛鳥じんじん</title>
     <link>https://veridianbyte.github.io/</link>
     <description>在世界的尽头你我又会遇见什么</description>
     <language>zh-CN</language>
@@ -10,7 +10,7 @@
     <generator>Hexo</generator>
     <image>
       <url>https://veridianbyte.github.io/images/feed-icon.png</url>
-      <title>ヾ(≧▽≦*)o 飛 鳥 じ ん じ ん</title>
+      <title>ヾ(≧▽≦*)o 飛鳥じんじん</title>
       <link>https://veridianbyte.github.io/</link>
     </image>
     <atom:link href="https://veridianbyte.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
