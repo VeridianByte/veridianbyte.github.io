@@ -9,7 +9,7 @@
   
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://veridianbyte.github.io';</script>
   <title>
-    树莓派通过USB硬盘盒启动 | ヾ(≧▽≦*)o飛鳥じんじん
+    Ubuntu树莓派实现家庭网络代理中继 | ヾ(≧▽≦*)o飛鳥じんじん
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
@@ -17,34 +17,22 @@
     
 <link rel="stylesheet" href="/css/loader.css">
 
-    <meta name="description" content="tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。">
+    <meta name="description" content="拿树莓派做一个使用的家庭网关！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树莓派通过USB硬盘盒启动">
-<meta property="og:url" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/index.html">
+<meta property="og:title" content="Ubuntu树莓派实现家庭网络代理中继">
+<meta property="og:url" content="https://veridianbyte.github.io/2025/03/01/clashctl_nat/index.html">
 <meta property="og:site_name" content="ヾ(≧▽≦*)o飛鳥じんじん">
-<meta property="og:description" content="tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。">
+<meta property="og:description" content="拿树莓派做一个使用的家庭网关！">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313203911450.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313204002359.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313204305970.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313204313544.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313204320567.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313204328964.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313204335789.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313204305970.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313204944249.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313204949821.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313204959441.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313205026957.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313205038393.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313205045896.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313205051332.png">
-<meta property="article:published_time" content="2026-03-01T01:06:21.000Z">
-<meta property="article:modified_time" content="2026-03-07T13:42:09.000Z">
+<meta property="article:published_time" content="2025-03-01T07:33:43.000Z">
+<meta property="article:modified_time" content="2026-01-10T02:21:55.000Z">
 <meta property="article:author" content="白菜">
-<meta property="article:tag" content="Pi-Imager">
+<meta property="article:tag" content="DHCP">
+<meta property="article:tag" content="NAT">
+<meta property="article:tag" content="clash">
+<meta property="article:tag" content="iptables">
+<meta property="article:tag" content="netplan">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/file-20260313203911450.png">
     <link rel="alternate" href="/atom.xml" title="ヾ(≧▽≦*)o飛鳥じんじん" type="application/atom+xml"><link rel="alternate" href="/rss2.xml" title="ヾ(≧▽≦*)o飛鳥じんじん" type="application/rss+xml">
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -149,11 +137,11 @@
 </div>
 <header id="header" aria-label="Site header">
     <picture></picture>
-    <img  fetchpriority="high" src="https://veridianbyte.github.io/covers/bg3.webp" alt="树莓派通过USB硬盘盒启动">
+    <img  fetchpriority="high" src="https://veridianbyte.github.io/covers/bg4.webp" alt="Ubuntu树莓派实现家庭网络代理中继">
   <div id="header-outer">
     <div id="header-title">
           <span id="logo">
-            <h1 data-aos="slide-up">树莓派通过USB硬盘盒启动</h1>
+            <h1 data-aos="slide-up">Ubuntu树莓派实现家庭网络代理中继</h1>
           </span>
         <h2 id="subtitle-wrap" data-aos="slide-down">
         </h2>
@@ -184,7 +172,7 @@
     <div class="sidebar-wrap" data-aos="fade-up">
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%A0%E8%83%BD%E5%AD%A6%E5%88%B0"><span class="toc-number">1.</span> <span class="toc-text"> 你能学到：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text"> 工具准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96usb%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text"> 格式化USB存储设备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E4%B8%8E%E9%85%8D%E7%BD%AE-eeprom"><span class="toc-number">4.</span> <span class="toc-text"> 更新与配置 EEPROM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text"> 写入系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BB%BA%E8%AE%AE%E4%BC%98%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text"> 建议优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%81%E7%94%A8cloud-init"><span class="toc-number">6.1.</span> <span class="toc-text"> 禁用Cloud-init</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%81%E7%94%A8%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="toc-number">6.2.</span> <span class="toc-text"> 禁用自动更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E8%A1%8C%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">6.3.</span> <span class="toc-text"> 进行基础网络配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#usb%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text"> USB存储设备兼容性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9B%E7%94%B5%E4%B8%8D%E8%B6%B3"><span class="toc-number">7.1.</span> <span class="toc-text"> 供电不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">7.2.</span> <span class="toc-text"> 兼容性问题</span></a></li></ol></li></ol>
+    
 </div>
 </div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -195,15 +183,15 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">3</div>
+    <div class="sidebar-state-number">4</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">5</div>
+    <div class="sidebar-state-number">6</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">4</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -256,16 +244,16 @@
   </div>
 </aside>
 
-          <section id="main" aria-label="Main content"><article id="post-raspi_usb_boot" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+          <section id="main" aria-label="Main content"><article id="post-clashctl_nat" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner" data-aos="fade-up">
     <div class="article-meta">
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
-    <time datetime="2026-03-01T01:06:21.000Z" itemprop="datePublished">2026-03-01</time>
-    <time style="display: none;" id="post-update-time">2026-03-07</time>
+    <time datetime="2025-03-01T07:33:43.000Z" itemprop="datePublished">2025-03-01</time>
+    <time style="display: none;" id="post-update-time">2026-01-10</time>
   </span>
     <span class="article-date-link icon-calendar-plus" data-aos="zoom-in">
-      <time datetime="2026-03-07T13:42:09.000Z" itemprop="dateModified">2026-03-07</time>
+      <time datetime="2026-01-10T02:21:55.000Z" itemprop="dateModified">2026-01-10</time>
     </span>
 </div>
 
@@ -274,113 +262,14 @@
     <div class="hr-line"></div>
     
     <div class="e-content article-entry" itemprop="articleBody">
-        <p>tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。</p>
+        <p>拿树莓派做一个使用的家庭网关！</p>
 <span id="more"></span>
-<h1 id="你能学到"><a class="markdownIt-Anchor" href="#你能学到"></a> 你能学到：</h1>
-<ol>
-<li>安装树莓派系统</li>
-<li>初始化系统设置并优化</li>
-<li>解决硬盘兼容性问题</li>
-</ol>
-<h1 id="工具准备"><a class="markdownIt-Anchor" href="#工具准备"></a> 工具准备</h1>
-<ol>
-<li>树莓派</li>
-<li>空tf卡</li>
-<li>一根micro hdmi线</li>
-<li>一个带独立供电的移动硬盘盒</li>
-<li>树莓派电源</li>
-<li>支持HDMI的显示器</li>
-<li>c2a口usb数据线</li>
-</ol>
-<blockquote>
-<p>如果嫌独立供电硬盘盒麻烦可以用蓝口U盘，后续步骤一样！</p>
-</blockquote>
-<p>安装树莓派官方镜像烧录工具：<a target="_blank" rel="noopener" href="https://www.raspberrypi.com/software/">https://www.raspberrypi.com/software/</a></p>
-<h1 id="格式化usb存储设备"><a class="markdownIt-Anchor" href="#格式化usb存储设备"></a> 格式化USB存储设备</h1>
-<p><img src="file-20260313203911450.png" alt="" /><br />
-选择自己的设备然后下下下下一步，确认写入即可：<br />
-<img src="file-20260313204002359.png" alt="" /><br />
-这里重复一遍将空闲tf卡也这样格式化一遍。</p>
-<h1 id="更新与配置-eeprom"><a class="markdownIt-Anchor" href="#更新与配置-eeprom"></a> 更新与配置 EEPROM</h1>
-<p>安装好tf卡，正确插入电脑后：<br />
-<img src="file-20260313204305970.png" alt="" /><br />
-<img src="file-20260313204313544.png" alt="" /><br />
-<img src="file-20260313204320567.png" alt="" /><br />
-<img src="file-20260313204328964.png" alt="" /><br />
-<img src="file-20260313204335789.png" alt="" /><br />
-后续如果想要换回默认sd卡启动那就同样的步骤选择SD Card Boot烧录即可！<br />
-将该sd卡插入树莓派并通电。</p>
-<blockquote>
-<p>树莓派的绿灯快速、规律地闪烁（每秒约 2-4 次），或者hdmi屏幕变绿。完成配置！</p>
-</blockquote>
-<p>现在请断开树莓派电源，拔出tf卡，这张tf卡可以放一边存着了。</p>
-<h1 id="写入系统"><a class="markdownIt-Anchor" href="#写入系统"></a> 写入系统</h1>
-<p><img src="file-20260313204305970.png" alt="" /><br />
-<img src="file-20260313204944249.png" alt="" /><br />
-<img src="file-20260313204949821.png" alt="" /><br />
-这里hostname最好还是写ubuntu就好了，看个人吧。<br />
-<img src="file-20260313204959441.png" alt="" /><br />
-<img src="file-20260313205026957.png" alt="" /><br />
-<img src="file-20260313205038393.png" alt="" /><br />
-<img src="file-20260313205045896.png" alt="" /><br />
-<img src="file-20260313205051332.png" alt="" /><br />
-完成后拔出，插入树莓派的USB3.0蓝口即可，带独立供电的记得插上硬盘盒供电。<br />
-插上后观察显示器，显示树莓派LOGO，正常启动！</p>
-<h1 id="建议优化"><a class="markdownIt-Anchor" href="#建议优化"></a> 建议优化</h1>
-<h2 id="禁用cloud-init"><a class="markdownIt-Anchor" href="#禁用cloud-init"></a> 禁用<strong>Cloud-init</strong></h2>
-<p>第一次启动会卡在<code>Reached target Cloud-init</code>是正常的，这里需要等待10分钟左右，完成后就会提示登陆。</p>
-<blockquote>
-<p><strong>Cloud-init</strong>用于在首次启动时自动配置 Linux 系统的标准工具。在云服务器上，它用来设置主机名、注入 SSH 密钥、配置网络等。在树莓派上，官方镜像（特别是 Ubuntu Server 和部分 Raspberry Pi OS）也集成了它，用于执行首次启动的脚本（如扩展文件系统、设置默认用户密码、配置 Wi-Fi 等）。</p>
-</blockquote>
-<p>如果等不及了可以使用<code>Ctrl + Alt + F2</code> 或 <code>F3</code> 尝试切换到另一个虚拟终端进行登录。<br />
-启动完成后可以直接将<code>Cloud-init</code>禁用，后续不会有什么影响：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">touch</span> /etc/cloud/cloud-init.disabled</span><br></pre></td></tr></table></figure>
-<p>登陆完成后，需要使用<code>ifconfig</code>查看IP用于远程SSH登陆：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install net-tools</span><br></pre></td></tr></table></figure>
-<h2 id="禁用自动更新"><a class="markdownIt-Anchor" href="#禁用自动更新"></a> 禁用自动更新</h2>
-<p>强烈建议系统自带的自动更新功能（<code>unattended-upgr</code>），这玩意会导致dpkg死锁，有时候卡很久重启也不一定行：<br />
-检查自动更新服务状态：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status unattended-upgrades</span><br></pre></td></tr></table></figure>
-<p>停止unattended-upgrades服务：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl stop unattended-upgrades</span><br></pre></td></tr></table></figure>
-<p>禁用开机自启：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> unattended-upgrades</span><br></pre></td></tr></table></figure>
-<p>禁用之后需要偶尔手动更新以保持系统正常运行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br></pre></td></tr></table></figure>
-<h2 id="进行基础网络配置"><a class="markdownIt-Anchor" href="#进行基础网络配置"></a> 进行基础网络配置</h2>
-<p>万能鱼香ROS脚本：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://fishros.com/install -O fishros &amp;&amp; . fishros</span><br></pre></td></tr></table></figure>
-<p>配置系统源和python源即可，剩下的按需求使用。</p>
-<h1 id="usb存储设备兼容性问题"><a class="markdownIt-Anchor" href="#usb存储设备兼容性问题"></a> USB存储设备兼容性问题</h1>
-<blockquote>
-<p>出现<code>Input/output error</code></p>
-</blockquote>
-<p>这就是掉盘了，树莓派无法写入硬盘数据，主要原因有：</p>
-<h2 id="供电不足"><a class="markdownIt-Anchor" href="#供电不足"></a> 供电不足</h2>
-<p>如果是自带供电的硬盘盒，那么需要检查电源线是否原装，树莓派电源线是否是官方指定的<code>5.1V3A</code>规格电源。U盘设备一般不会出现供电不足的问题，考虑是否是U盘损坏。<br />
-通过优化树莓派供电可以适当缓解：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /boot/firmware/config.txt</span><br></pre></td></tr></table></figure>
-<p>文末添加：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">max_usb_current=1</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> reboot</span><br></pre></td></tr></table></figure>
-<h2 id="兼容性问题"><a class="markdownIt-Anchor" href="#兼容性问题"></a> 兼容性问题</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsusb</span><br></pre></td></tr></table></figure>
-<p>查看输出中的ID，以<code>0bda:9210</code>为例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /boot/firmware/cmdline.txt</span><br></pre></td></tr></table></figure>
-<p>在文件顶格添加：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usb-storage.quirks=0bda:9210:u  </span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里一定不要换行，记得用空格隔开。</p>
-</blockquote>
-<p>文末添加：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usbcore.autosuspend=-1</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> reboot</span><br></pre></td></tr></table></figure>
 
     </div>
     <footer class="article-footer">
         <blockquote class="article-copyright">
     <p><strong><span class="icon-user icon"></span>本文作者：</strong>白菜</p>
-    <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/">https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/</a></p>
+    <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://veridianbyte.github.io/2025/03/01/clashctl_nat/">https://veridianbyte.github.io/2025/03/01/clashctl_nat/</a></p>
     
     
     
@@ -406,11 +295,11 @@
     </div>
 </div>
         <div class="share-wrapper">
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=%E6%A0%91%E8%8E%93%E6%B4%BE%E9%80%9A%E8%BF%87USB%E7%A1%AC%E7%9B%98%E7%9B%92%E5%90%AF%E5%8A%A8&amp;desc=tf%E5%8D%A1%E5%8F%88%E6%85%A2%E5%AF%BF%E5%91%BD%E5%8F%88%E4%BD%8E%EF%BC%8C%E6%80%A7%E4%BB%B7%E6%AF%94%E5%A0%AA%E5%BF%A7%EF%BC%8C%E4%BD%BF%E7%94%A8nvme%E7%A1%AC%E7%9B%98%E7%9B%92%E5%B0%86%E8%80%81%E6%97%A7%E5%9B%BA%E6%80%81%E5%88%A9%E7%94%A8%E8%B5%B7%E6%9D%A5%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E6%AD%A3%E6%AD%A3%E5%A5%BD%E3%80%82&amp;source=https%3A%2F%2Fveridianbyte.github.io" target="_blank" rel="noopener noreferrer" title="树莓派通过USB硬盘盒启动">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=Ubuntu%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E4%B8%AD%E7%BB%A7&amp;desc=%E6%8B%BF%E6%A0%91%E8%8E%93%E6%B4%BE%E5%81%9A%E4%B8%80%E4%B8%AA%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AE%B6%E5%BA%AD%E7%BD%91%E5%85%B3%EF%BC%81&amp;source=https%3A%2F%2Fveridianbyte.github.io" target="_blank" rel="noopener noreferrer" title="Ubuntu树莓派实现家庭网络代理中继">
       <div class="share-icon icon icon-qq">
       </div>
     </a>
-    <a href="javascript:;"  title="树莓派通过USB硬盘盒启动">
+    <a href="javascript:;"  title="Ubuntu树莓派实现家庭网络代理中继">
       <div class="share-icon icon icon-weixin">
           <div id="share-weixin">
             <div class="share-weixin-dom">
@@ -432,17 +321,17 @@
       </div>
     </a>
 </div>
-        <a data-aos="zoom-in" href="/2026/03/01/raspi_usb_boot/#comments" class="article-comment-link">
-          <span class="post-comments-count waline-comment-count" data-path="/2026/03/01/raspi_usb_boot/" itemprop="commentCount"></span>
+        <a data-aos="zoom-in" href="/2025/03/01/clashctl_nat/#comments" class="article-comment-link">
+          <span class="post-comments-count waline-comment-count" data-path="/2025/03/01/clashctl_nat/" itemprop="commentCount"></span>
           留言
         </a>
         <span data-aos="zoom-in" class="article-visitor-link">
-          <span class="waline-pageview-count" data-path="/2026/03/01/raspi_usb_boot/">0</span>
+          <span class="waline-pageview-count" data-path="/2025/03/01/clashctl_nat/">0</span>
           <em class="post-meta-item-text">阅读量</em>
         </span>
-        <a class="article-category-link" href="/categories/raspberry4/" title="raspberry4" data-aos="zoom-in">raspberry4</a><a class="article-category-link" href="/categories/raspberry4/Ubuntu-2204-server/" title="Ubuntu 2204 server" data-aos="zoom-in">Ubuntu 2204 server</a>
+        <a class="article-category-link" href="/categories/raspberry4/" title="raspberry4" data-aos="zoom-in">raspberry4</a><a class="article-category-link" href="/categories/raspberry4/Ubuntu-2204-server/" title="Ubuntu 2204 server" data-aos="zoom-in">Ubuntu 2204 server</a><a class="article-category-link" href="/categories/raspberry4/Ubuntu-2204-server/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络" data-aos="zoom-in">计算机网络</a>
 
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Pi-Imager/" rel="tag" title="Pi-Imager">Pi-Imager</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/DHCP/" rel="tag" title="DHCP">DHCP</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/NAT/" rel="tag" title="NAT">NAT</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/clash/" rel="tag" title="clash">clash</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/iptables/" rel="tag" title="iptables">iptables</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/netplan/" rel="tag" title="netplan">netplan</a></li></ul>
 
     </footer>
   </div>
@@ -457,7 +346,7 @@
       </div>
     <div class="article-nav-link-wrap right">
         <img data-src="https://veridianbyte.github.io/covers/bg2.webp" data-sizes="auto" alt="hexo-reimu主题联动obsidian更新博客" class="lazyload">
-      <a href="/2026/02/23/hexo_obsidian/" aria-label="后一篇: hexo-reimu主题联动obsidian更新博客"  title="后一篇: hexo-reimu主题联动obsidian更新博客"></a>
+      <a href="/2025/02/23/hexo_obsidian/" aria-label="后一篇: hexo-reimu主题联动obsidian更新博客"  title="后一篇: hexo-reimu主题联动obsidian更新博客"></a>
       <div class="article-nav-caption">后一篇</div>
       <h3 class="article-nav-title">
           hexo-reimu主题联动obsidian更新博客
@@ -505,10 +394,10 @@
       </div>
       <div>
         <span class="icon-brush"></span>
-        2.3k
+        3.7k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:10
+        00:16
       </div>
       <div>
         <span class="icon-eye"></span>
@@ -530,7 +419,7 @@
   <div class="sidebar-wrap">
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%A0%E8%83%BD%E5%AD%A6%E5%88%B0"><span class="toc-number">1.</span> <span class="toc-text"> 你能学到：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text"> 工具准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96usb%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text"> 格式化USB存储设备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E4%B8%8E%E9%85%8D%E7%BD%AE-eeprom"><span class="toc-number">4.</span> <span class="toc-text"> 更新与配置 EEPROM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text"> 写入系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BB%BA%E8%AE%AE%E4%BC%98%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text"> 建议优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%81%E7%94%A8cloud-init"><span class="toc-number">6.1.</span> <span class="toc-text"> 禁用Cloud-init</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%81%E7%94%A8%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="toc-number">6.2.</span> <span class="toc-text"> 禁用自动更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E8%A1%8C%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">6.3.</span> <span class="toc-text"> 进行基础网络配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#usb%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text"> USB存储设备兼容性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9B%E7%94%B5%E4%B8%8D%E8%B6%B3"><span class="toc-number">7.1.</span> <span class="toc-text"> 供电不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">7.2.</span> <span class="toc-text"> 兼容性问题</span></a></li></ol></li></ol>
+    
 </div>
 </div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -541,15 +430,15 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">3</div>
+    <div class="sidebar-state-number">4</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">5</div>
+    <div class="sidebar-state-number">6</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">4</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -706,14 +595,14 @@
       <script data-pjax>
         window.REIMU_POST = {
           author: "白菜",
-          title: "树莓派通过USB硬盘盒启动",
-          url: "https://veridianbyte.github.io/2026/03/01/raspi_usb_boot/",
-          excerpt: "tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。",
+          title: "Ubuntu树莓派实现家庭网络代理中继",
+          url: "https://veridianbyte.github.io/2025/03/01/clashctl_nat/",
+          excerpt: "拿树莓派做一个使用的家庭网关！",
           description: "",
-          stripContent: "tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。   你能学到：  安装树莓派系统 初始化系统设置并优化 解决硬盘兼容性问题   工具准备  树莓派 空tf卡 一根micro hdmi线 一个带独立供电的移动硬盘盒 树莓派电源 支持HDMI的显示器 c2a口usb数据线   如果嫌独立供电硬盘盒麻烦可以用蓝口U盘，后续步骤一样！  安装树莓派官方镜像烧录工具：https://www.raspberrypi.com/software/  格式化USB存储设备 ",
-          date: "Sun Mar 01 2026 09:06:21 GMT+0800",
-          updated: "Sat Mar 07 2026 21:42:09 GMT+0800",
-          cover: "https://veridianbyte.github.io/covers/bg3.webp",
+          stripContent: "拿树莓派做一个使用的家庭网关！  ",
+          date: "Sat Mar 01 2025 15:33:43 GMT+0800",
+          updated: "Sat Jan 10 2026 10:21:55 GMT+0800",
+          cover: "https://veridianbyte.github.io/covers/bg4.webp",
         };
       </script>
         

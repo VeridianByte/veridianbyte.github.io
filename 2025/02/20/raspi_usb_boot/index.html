@@ -9,7 +9,7 @@
   
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://veridianbyte.github.io';</script>
   <title>
-    hexo-reimu主题联动obsidian更新博客 | ヾ(≧▽≦*)o飛鳥じんじん
+    树莓派通过USB硬盘盒启动 | ヾ(≧▽≦*)o飛鳥じんじん
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
@@ -17,27 +17,34 @@
     
 <link rel="stylesheet" href="/css/loader.css">
 
-    <meta name="description" content="win配置obsidian+hexo">
+    <meta name="description" content="tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo-reimu主题联动obsidian更新博客">
-<meta property="og:url" content="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/index.html">
+<meta property="og:title" content="树莓派通过USB硬盘盒启动">
+<meta property="og:url" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/index.html">
 <meta property="og:site_name" content="ヾ(≧▽≦*)o飛鳥じんじん">
-<meta property="og:description" content="win配置obsidian+hexo">
+<meta property="og:description" content="tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/file-20260224000544649.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/file-20260224000926054.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/file-20260224000959106.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/file-20260224114840209.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/file-20260224113023247.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/file-20260224112143944.png">
-<meta property="og:image" content="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/file-20260224131410824.png">
-<meta property="article:published_time" content="2026-02-23T07:20:47.000Z">
-<meta property="article:modified_time" content="2026-02-24T05:14:34.000Z">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313203911450.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313204002359.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313204305970.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313204313544.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313204320567.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313204328964.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313204335789.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313204305970.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313204944249.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313204949821.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313204959441.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313205026957.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313205038393.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313205045896.png">
+<meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313205051332.png">
+<meta property="article:published_time" content="2025-02-20T01:06:21.000Z">
+<meta property="article:modified_time" content="2026-01-11T13:42:09.000Z">
 <meta property="article:author" content="白菜">
-<meta property="article:tag" content="hexo">
-<meta property="article:tag" content="obsidian">
+<meta property="article:tag" content="Pi-Imager">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/file-20260224000544649.png">
+<meta name="twitter:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313203911450.png">
     <link rel="alternate" href="/atom.xml" title="ヾ(≧▽≦*)o飛鳥じんじん" type="application/atom+xml"><link rel="alternate" href="/rss2.xml" title="ヾ(≧▽≦*)o飛鳥じんじん" type="application/rss+xml">
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -142,11 +149,11 @@
 </div>
 <header id="header" aria-label="Site header">
     <picture></picture>
-    <img  fetchpriority="high" src="https://veridianbyte.github.io/covers/bg2.webp" alt="hexo-reimu主题联动obsidian更新博客">
+    <img  fetchpriority="high" src="https://veridianbyte.github.io/covers/bg3.webp" alt="树莓派通过USB硬盘盒启动">
   <div id="header-outer">
     <div id="header-title">
           <span id="logo">
-            <h1 data-aos="slide-up">hexo-reimu主题联动obsidian更新博客</h1>
+            <h1 data-aos="slide-up">树莓派通过USB硬盘盒启动</h1>
           </span>
         <h2 id="subtitle-wrap" data-aos="slide-down">
         </h2>
@@ -177,7 +184,7 @@
     <div class="sidebar-wrap" data-aos="fade-up">
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85hexo%E4%B8%8Enodejs"><span class="toc-number">1.</span> <span class="toc-text"> 安装Hexo与Node.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text"> Node.js安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85hexo"><span class="toc-number">1.2.</span> <span class="toc-text"> 安装Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> Git配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#obsidian%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text"> obsidian配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85obsidian"><span class="toc-number">2.1.</span> <span class="toc-text"> 安装obsidian</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text"> 安装插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEshell-commands"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 配置Shell commands</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEcustom-attachment-location"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 配置Custom Attachment Location</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhexo%E7%9A%84_configyml"><span class="toc-number">2.3.</span> <span class="toc-text"> 配置Hexo的_config.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#obsidian%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.4.</span> <span class="toc-text"> obsidian设置</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%A0%E8%83%BD%E5%AD%A6%E5%88%B0"><span class="toc-number">1.</span> <span class="toc-text"> 你能学到：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text"> 工具准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96usb%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text"> 格式化USB存储设备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E4%B8%8E%E9%85%8D%E7%BD%AE-eeprom"><span class="toc-number">4.</span> <span class="toc-text"> 更新与配置 EEPROM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text"> 写入系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BB%BA%E8%AE%AE%E4%BC%98%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text"> 建议优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%81%E7%94%A8cloud-init"><span class="toc-number">6.1.</span> <span class="toc-text"> 禁用Cloud-init</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%81%E7%94%A8%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="toc-number">6.2.</span> <span class="toc-text"> 禁用自动更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E8%A1%8C%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">6.3.</span> <span class="toc-text"> 进行基础网络配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#usb%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text"> USB存储设备兼容性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9B%E7%94%B5%E4%B8%8D%E8%B6%B3"><span class="toc-number">7.1.</span> <span class="toc-text"> 供电不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">7.2.</span> <span class="toc-text"> 兼容性问题</span></a></li></ol></li></ol>
 </div>
 </div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -188,15 +195,15 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">3</div>
+    <div class="sidebar-state-number">4</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">5</div>
+    <div class="sidebar-state-number">6</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">4</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -249,16 +256,16 @@
   </div>
 </aside>
 
-          <section id="main" aria-label="Main content"><article id="post-hexo_obsidian" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+          <section id="main" aria-label="Main content"><article id="post-raspi_usb_boot" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner" data-aos="fade-up">
     <div class="article-meta">
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
-    <time datetime="2026-02-23T07:20:47.000Z" itemprop="datePublished">2026-02-23</time>
-    <time style="display: none;" id="post-update-time">2026-02-24</time>
+    <time datetime="2025-02-20T01:06:21.000Z" itemprop="datePublished">2025-02-20</time>
+    <time style="display: none;" id="post-update-time">2026-01-11</time>
   </span>
     <span class="article-date-link icon-calendar-plus" data-aos="zoom-in">
-      <time datetime="2026-02-24T05:14:34.000Z" itemprop="dateModified">2026-02-24</time>
+      <time datetime="2026-01-11T13:42:09.000Z" itemprop="dateModified">2026-01-11</time>
     </span>
 </div>
 
@@ -267,70 +274,113 @@
     <div class="hr-line"></div>
     
     <div class="e-content article-entry" itemprop="articleBody">
-        <p>win11下配置obsidian联动hexo更新博客</p>
+        <p>tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。</p>
 <span id="more"></span>
-<h1 id="安装hexo与nodejs"><a class="markdownIt-Anchor" href="#安装hexo与nodejs"></a> 安装Hexo与Node.js</h1>
-<h2 id="nodejs安装"><a class="markdownIt-Anchor" href="#nodejs安装"></a> Node.js安装</h2>
-<p>在 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a> 选择Windows Installer（.msi）根据个人需要调整安装选项。<br />
-安装完成后在终端中输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p>应当正常显示node与npm版本。</p>
-<h2 id="安装hexo"><a class="markdownIt-Anchor" href="#安装hexo"></a> 安装Hexo</h2>
-<p>在终端中输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init my-blog/</span><br></pre></td></tr></table></figure>
-<p>在<code>my-blog</code>目录下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>这里也可以直接安装其他主题，根据你想安装的主题而定：<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo-Themes</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-theme-reimu --save</span><br></pre></td></tr></table></figure>
-<p>安装完成后即可正常使用Hexo。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<h2 id="git配置"><a class="markdownIt-Anchor" href="#git配置"></a> Git配置</h2>
-<p>选择适合版本的git <a target="_blank" rel="noopener" href="https://git-scm.com/install/windows">https://git-scm.com/install/windows</a><br />
-安装完成后，在博客根目录的<code>_config.yml</code>中配置你的账户：</p>
-<figure class="highlight yaml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://Github</span> <span class="string">ID@github.com/Github名/仓库名.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">填写仓库的主分支</span></span><br></pre></td></tr></table></figure>
-<h1 id="obsidian配置"><a class="markdownIt-Anchor" href="#obsidian配置"></a> obsidian配置</h1>
-<h2 id="安装obsidian"><a class="markdownIt-Anchor" href="#安装obsidian"></a> 安装obsidian</h2>
-<p>在 <a target="_blank" rel="noopener" href="https://obsidian.md/download">https://obsidian.md/download</a> 下载并安装，完成后打开obsidian选择my-blog作为本地仓库打开：<br />
-<img src="file-20260224000544649.png" alt="" /></p>
-<h2 id="安装插件"><a class="markdownIt-Anchor" href="#安装插件"></a> 安装插件</h2>
-<p>在设置的第三方插件处，关闭安全模式<br />
-<img src="file-20260224000926054.png" alt="" /><br />
-在社区插件市场安装 <code>File Tree Alternative</code>、<code>floating toc</code>、<code>Git</code>、<code>Shell commands</code>、<code>Custom Attachment Location</code>。</p>
-<h3 id="配置shell-commands"><a class="markdownIt-Anchor" href="#配置shell-commands"></a> 配置Shell commands</h3>
-<p>选择<code>New shell command</code>，添加<code>start deploy.sh</code>和<code>start server.sh</code><br />
-<img src="file-20260224000959106.png" alt="" /><br />
-在my-blog根目录中添加<code>deploy.sh</code>与<code>server.sh</code></p>
-<figure class="highlight bash"><figcaption><span>deploy.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成静态文件</span></span><br><span class="line">hexo clean &amp;&amp; hexo generate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署到 GitHub Pages</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><figcaption><span>server.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成静态文件</span></span><br><span class="line">hexo clean &amp;&amp; hexo generate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开本地服务</span></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>在命令面板中搜索<code>start deploy.sh</code>或<code>start server.sh</code>即可同步GitHub或本地预览</p>
+<h1 id="你能学到"><a class="markdownIt-Anchor" href="#你能学到"></a> 你能学到：</h1>
+<ol>
+<li>安装树莓派系统</li>
+<li>初始化系统设置并优化</li>
+<li>解决硬盘兼容性问题</li>
+</ol>
+<h1 id="工具准备"><a class="markdownIt-Anchor" href="#工具准备"></a> 工具准备</h1>
+<ol>
+<li>树莓派</li>
+<li>空tf卡</li>
+<li>一根micro hdmi线</li>
+<li>一个带独立供电的移动硬盘盒</li>
+<li>树莓派电源</li>
+<li>支持HDMI的显示器</li>
+<li>c2a口usb数据线</li>
+</ol>
 <blockquote>
-<p>这里记得把sh文件的默认打开方式改为Git for Windows</p>
+<p>如果嫌独立供电硬盘盒麻烦可以用蓝口U盘，后续步骤一样！</p>
 </blockquote>
-<p><img src="file-20260224114840209.png" alt="" /></p>
-<h3 id="配置custom-attachment-location"><a class="markdownIt-Anchor" href="#配置custom-attachment-location"></a> 配置Custom Attachment Location</h3>
-<p>新附件位置填入<code>./${noteFileName}</code>，如下图所示：<br />
-<img src="file-20260224113023247.png" alt="" /></p>
-<h2 id="配置hexo的_configyml"><a class="markdownIt-Anchor" href="#配置hexo的_configyml"></a> 配置Hexo的_config.yml</h2>
-<p>将博客根目录<code>_config.yml</code>文件的<code>post_asset_folder</code>值设置为<code>true</code></p>
-<figure class="highlight yaml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h2 id="obsidian设置"><a class="markdownIt-Anchor" href="#obsidian设置"></a> obsidian设置</h2>
-<p>打开设置在文件与连接选项中按图中设置。</p>
+<p>安装树莓派官方镜像烧录工具：<a target="_blank" rel="noopener" href="https://www.raspberrypi.com/software/">https://www.raspberrypi.com/software/</a></p>
+<h1 id="格式化usb存储设备"><a class="markdownIt-Anchor" href="#格式化usb存储设备"></a> 格式化USB存储设备</h1>
+<p><img src="file-20260313203911450.png" alt="" /><br />
+选择自己的设备然后下下下下一步，确认写入即可：<br />
+<img src="file-20260313204002359.png" alt="" /><br />
+这里重复一遍将空闲tf卡也这样格式化一遍。</p>
+<h1 id="更新与配置-eeprom"><a class="markdownIt-Anchor" href="#更新与配置-eeprom"></a> 更新与配置 EEPROM</h1>
+<p>安装好tf卡，正确插入电脑后：<br />
+<img src="file-20260313204305970.png" alt="" /><br />
+<img src="file-20260313204313544.png" alt="" /><br />
+<img src="file-20260313204320567.png" alt="" /><br />
+<img src="file-20260313204328964.png" alt="" /><br />
+<img src="file-20260313204335789.png" alt="" /><br />
+后续如果想要换回默认sd卡启动那就同样的步骤选择SD Card Boot烧录即可！<br />
+将该sd卡插入树莓派并通电。</p>
 <blockquote>
-<p><code>附件文件夹路径</code>不用填，由Custom Attachment Location插件自动生成。</p>
+<p>树莓派的绿灯快速、规律地闪烁（每秒约 2-4 次），或者hdmi屏幕变绿。完成配置！</p>
 </blockquote>
-<p><img src="file-20260224112143944.png" alt="" /><br />
-<img src="file-20260224131410824.png" alt="" /></p>
-<ul>
-<li>此时obsidian中插入图片的格式应当为：<code>![](file-xxxxxxxxx.png)</code><br />
-假设博客位置为：<code>source\_posts\text.md</code>则图片应当存储在<code>source\_posts\text\file-xxxxxxxxx.png</code></li>
-</ul>
+<p>现在请断开树莓派电源，拔出tf卡，这张tf卡可以放一边存着了。</p>
+<h1 id="写入系统"><a class="markdownIt-Anchor" href="#写入系统"></a> 写入系统</h1>
+<p><img src="file-20260313204305970.png" alt="" /><br />
+<img src="file-20260313204944249.png" alt="" /><br />
+<img src="file-20260313204949821.png" alt="" /><br />
+这里hostname最好还是写ubuntu就好了，看个人吧。<br />
+<img src="file-20260313204959441.png" alt="" /><br />
+<img src="file-20260313205026957.png" alt="" /><br />
+<img src="file-20260313205038393.png" alt="" /><br />
+<img src="file-20260313205045896.png" alt="" /><br />
+<img src="file-20260313205051332.png" alt="" /><br />
+完成后拔出，插入树莓派的USB3.0蓝口即可，带独立供电的记得插上硬盘盒供电。<br />
+插上后观察显示器，显示树莓派LOGO，正常启动！</p>
+<h1 id="建议优化"><a class="markdownIt-Anchor" href="#建议优化"></a> 建议优化</h1>
+<h2 id="禁用cloud-init"><a class="markdownIt-Anchor" href="#禁用cloud-init"></a> 禁用<strong>Cloud-init</strong></h2>
+<p>第一次启动会卡在<code>Reached target Cloud-init</code>是正常的，这里需要等待10分钟左右，完成后就会提示登陆。</p>
+<blockquote>
+<p><strong>Cloud-init</strong>用于在首次启动时自动配置 Linux 系统的标准工具。在云服务器上，它用来设置主机名、注入 SSH 密钥、配置网络等。在树莓派上，官方镜像（特别是 Ubuntu Server 和部分 Raspberry Pi OS）也集成了它，用于执行首次启动的脚本（如扩展文件系统、设置默认用户密码、配置 Wi-Fi 等）。</p>
+</blockquote>
+<p>如果等不及了可以使用<code>Ctrl + Alt + F2</code> 或 <code>F3</code> 尝试切换到另一个虚拟终端进行登录。<br />
+启动完成后可以直接将<code>Cloud-init</code>禁用，后续不会有什么影响：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">touch</span> /etc/cloud/cloud-init.disabled</span><br></pre></td></tr></table></figure>
+<p>登陆完成后，需要使用<code>ifconfig</code>查看IP用于远程SSH登陆：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install net-tools</span><br></pre></td></tr></table></figure>
+<h2 id="禁用自动更新"><a class="markdownIt-Anchor" href="#禁用自动更新"></a> 禁用自动更新</h2>
+<p>强烈建议系统自带的自动更新功能（<code>unattended-upgr</code>），这玩意会导致dpkg死锁，有时候卡很久重启也不一定行：<br />
+检查自动更新服务状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status unattended-upgrades</span><br></pre></td></tr></table></figure>
+<p>停止unattended-upgrades服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl stop unattended-upgrades</span><br></pre></td></tr></table></figure>
+<p>禁用开机自启：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> unattended-upgrades</span><br></pre></td></tr></table></figure>
+<p>禁用之后需要偶尔手动更新以保持系统正常运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br></pre></td></tr></table></figure>
+<h2 id="进行基础网络配置"><a class="markdownIt-Anchor" href="#进行基础网络配置"></a> 进行基础网络配置</h2>
+<p>万能鱼香ROS脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://fishros.com/install -O fishros &amp;&amp; . fishros</span><br></pre></td></tr></table></figure>
+<p>配置系统源和python源即可，剩下的按需求使用。</p>
+<h1 id="usb存储设备兼容性问题"><a class="markdownIt-Anchor" href="#usb存储设备兼容性问题"></a> USB存储设备兼容性问题</h1>
+<blockquote>
+<p>出现<code>Input/output error</code></p>
+</blockquote>
+<p>这就是掉盘了，树莓派无法写入硬盘数据，主要原因有：</p>
+<h2 id="供电不足"><a class="markdownIt-Anchor" href="#供电不足"></a> 供电不足</h2>
+<p>如果是自带供电的硬盘盒，那么需要检查电源线是否原装，树莓派电源线是否是官方指定的<code>5.1V3A</code>规格电源。U盘设备一般不会出现供电不足的问题，考虑是否是U盘损坏。<br />
+通过优化树莓派供电可以适当缓解：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /boot/firmware/config.txt</span><br></pre></td></tr></table></figure>
+<p>文末添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">max_usb_current=1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> reboot</span><br></pre></td></tr></table></figure>
+<h2 id="兼容性问题"><a class="markdownIt-Anchor" href="#兼容性问题"></a> 兼容性问题</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsusb</span><br></pre></td></tr></table></figure>
+<p>查看输出中的ID，以<code>0bda:9210</code>为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /boot/firmware/cmdline.txt</span><br></pre></td></tr></table></figure>
+<p>在文件顶格添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usb-storage.quirks=0bda:9210:u  </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里一定不要换行，记得用空格隔开。</p>
+</blockquote>
+<p>文末添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usbcore.autosuspend=-1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> reboot</span><br></pre></td></tr></table></figure>
 
     </div>
     <footer class="article-footer">
         <blockquote class="article-copyright">
     <p><strong><span class="icon-user icon"></span>本文作者：</strong>白菜</p>
-    <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://veridianbyte.github.io/2026/02/23/hexo_obsidian/">https://veridianbyte.github.io/2026/02/23/hexo_obsidian/</a></p>
+    <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/">https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/</a></p>
     
     
     
@@ -356,11 +406,11 @@
     </div>
 </div>
         <div class="share-wrapper">
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=hexo-reimu%E4%B8%BB%E9%A2%98%E8%81%94%E5%8A%A8obsidian%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2&amp;desc=win11%E4%B8%8B%E9%85%8D%E7%BD%AEobsidian%E8%81%94%E5%8A%A8hexo%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2&amp;source=https%3A%2F%2Fveridianbyte.github.io" target="_blank" rel="noopener noreferrer" title="hexo-reimu主题联动obsidian更新博客">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=%E6%A0%91%E8%8E%93%E6%B4%BE%E9%80%9A%E8%BF%87USB%E7%A1%AC%E7%9B%98%E7%9B%92%E5%90%AF%E5%8A%A8&amp;desc=tf%E5%8D%A1%E5%8F%88%E6%85%A2%E5%AF%BF%E5%91%BD%E5%8F%88%E4%BD%8E%EF%BC%8C%E6%80%A7%E4%BB%B7%E6%AF%94%E5%A0%AA%E5%BF%A7%EF%BC%8C%E4%BD%BF%E7%94%A8nvme%E7%A1%AC%E7%9B%98%E7%9B%92%E5%B0%86%E8%80%81%E6%97%A7%E5%9B%BA%E6%80%81%E5%88%A9%E7%94%A8%E8%B5%B7%E6%9D%A5%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E6%AD%A3%E6%AD%A3%E5%A5%BD%E3%80%82&amp;source=https%3A%2F%2Fveridianbyte.github.io" target="_blank" rel="noopener noreferrer" title="树莓派通过USB硬盘盒启动">
       <div class="share-icon icon icon-qq">
       </div>
     </a>
-    <a href="javascript:;"  title="hexo-reimu主题联动obsidian更新博客">
+    <a href="javascript:;"  title="树莓派通过USB硬盘盒启动">
       <div class="share-icon icon icon-weixin">
           <div id="share-weixin">
             <div class="share-weixin-dom">
@@ -382,27 +432,27 @@
       </div>
     </a>
 </div>
-        <a data-aos="zoom-in" href="/2026/02/23/hexo_obsidian/#comments" class="article-comment-link">
-          <span class="post-comments-count waline-comment-count" data-path="/2026/02/23/hexo_obsidian/" itemprop="commentCount"></span>
+        <a data-aos="zoom-in" href="/2025/02/20/raspi_usb_boot/#comments" class="article-comment-link">
+          <span class="post-comments-count waline-comment-count" data-path="/2025/02/20/raspi_usb_boot/" itemprop="commentCount"></span>
           留言
         </a>
         <span data-aos="zoom-in" class="article-visitor-link">
-          <span class="waline-pageview-count" data-path="/2026/02/23/hexo_obsidian/">0</span>
+          <span class="waline-pageview-count" data-path="/2025/02/20/raspi_usb_boot/">0</span>
           <em class="post-meta-item-text">阅读量</em>
         </span>
-        <a class="article-category-link" href="/categories/Windows11/" title="Windows11" data-aos="zoom-in">Windows11</a><a class="article-category-link" href="/categories/Windows11/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="个人博客" data-aos="zoom-in">个人博客</a>
+        <a class="article-category-link" href="/categories/raspberry4/" title="raspberry4" data-aos="zoom-in">raspberry4</a><a class="article-category-link" href="/categories/raspberry4/Ubuntu-2204-server/" title="Ubuntu 2204 server" data-aos="zoom-in">Ubuntu 2204 server</a>
 
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag" title="hexo">hexo</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/obsidian/" rel="tag" title="obsidian">obsidian</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Pi-Imager/" rel="tag" title="Pi-Imager">Pi-Imager</a></li></ul>
 
     </footer>
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
       <div class="article-nav-link-wrap left">
-          <img data-src="https://veridianbyte.github.io/covers/bg3.webp" data-sizes="auto" alt="树莓派通过USB硬盘盒启动" class="lazyload">
-        <a href="/2026/03/01/raspi_usb_boot/" aria-label="前一篇: 树莓派通过USB硬盘盒启动" title="前一篇: 树莓派通过USB硬盘盒启动"></a>
+          <img data-src="https://veridianbyte.github.io/covers/bg2.webp" data-sizes="auto" alt="hexo-reimu主题联动obsidian更新博客" class="lazyload">
+        <a href="/2025/02/23/hexo_obsidian/" aria-label="前一篇: hexo-reimu主题联动obsidian更新博客" title="前一篇: hexo-reimu主题联动obsidian更新博客"></a>
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">
-            树莓派通过USB硬盘盒启动
+            hexo-reimu主题联动obsidian更新博客
         </h3>
       </div>
   </nav>
@@ -447,10 +497,10 @@
       </div>
       <div>
         <span class="icon-brush"></span>
-        2.3k
+        3.7k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:10
+        00:16
       </div>
       <div>
         <span class="icon-eye"></span>
@@ -472,7 +522,7 @@
   <div class="sidebar-wrap">
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85hexo%E4%B8%8Enodejs"><span class="toc-number">1.</span> <span class="toc-text"> 安装Hexo与Node.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text"> Node.js安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85hexo"><span class="toc-number">1.2.</span> <span class="toc-text"> 安装Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> Git配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#obsidian%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text"> obsidian配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85obsidian"><span class="toc-number">2.1.</span> <span class="toc-text"> 安装obsidian</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text"> 安装插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEshell-commands"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 配置Shell commands</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEcustom-attachment-location"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 配置Custom Attachment Location</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhexo%E7%9A%84_configyml"><span class="toc-number">2.3.</span> <span class="toc-text"> 配置Hexo的_config.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#obsidian%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.4.</span> <span class="toc-text"> obsidian设置</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%A0%E8%83%BD%E5%AD%A6%E5%88%B0"><span class="toc-number">1.</span> <span class="toc-text"> 你能学到：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text"> 工具准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96usb%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text"> 格式化USB存储设备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E4%B8%8E%E9%85%8D%E7%BD%AE-eeprom"><span class="toc-number">4.</span> <span class="toc-text"> 更新与配置 EEPROM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text"> 写入系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BB%BA%E8%AE%AE%E4%BC%98%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text"> 建议优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%81%E7%94%A8cloud-init"><span class="toc-number">6.1.</span> <span class="toc-text"> 禁用Cloud-init</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%81%E7%94%A8%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="toc-number">6.2.</span> <span class="toc-text"> 禁用自动更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E8%A1%8C%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">6.3.</span> <span class="toc-text"> 进行基础网络配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#usb%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text"> USB存储设备兼容性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9B%E7%94%B5%E4%B8%8D%E8%B6%B3"><span class="toc-number">7.1.</span> <span class="toc-text"> 供电不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">7.2.</span> <span class="toc-text"> 兼容性问题</span></a></li></ol></li></ol>
 </div>
 </div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -483,15 +533,15 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">3</div>
+    <div class="sidebar-state-number">4</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
-    <div class="sidebar-state-number">5</div>
+    <div class="sidebar-state-number">6</div>
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">4</div>
+    <div class="sidebar-state-number">9</div>
   </div>
 </div>
 <div class="sidebar-social" >
@@ -648,14 +698,14 @@
       <script data-pjax>
         window.REIMU_POST = {
           author: "白菜",
-          title: "hexo-reimu主题联动obsidian更新博客",
-          url: "https://veridianbyte.github.io/2026/02/23/hexo_obsidian/",
-          excerpt: "win11下配置obsidian联动hexo更新博客",
-          description: "win配置obsidian+hexo",
-          stripContent: "win11下配置obsidian联动hexo更新博客   安装Hexo与Node.js  Node.js安装 在 https://nodejs.org/en/download/ 选择Windows Installer（.msi）根据个人需要调整安装选项。 安装完成后在终端中输入： 12node -vnpm -v 应当正常显示node与npm版本。  安装Hexo 在终端中输入： 1npm install -g hexo-cli 1hexo init my-blog/ 在my-blog目录下： 1",
-          date: "Mon Feb 23 2026 15:20:47 GMT+0800",
-          updated: "Tue Feb 24 2026 13:14:34 GMT+0800",
-          cover: "https://veridianbyte.github.io/covers/bg2.webp",
+          title: "树莓派通过USB硬盘盒启动",
+          url: "https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/",
+          excerpt: "tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。",
+          description: "",
+          stripContent: "tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。   你能学到：  安装树莓派系统 初始化系统设置并优化 解决硬盘兼容性问题   工具准备  树莓派 空tf卡 一根micro hdmi线 一个带独立供电的移动硬盘盒 树莓派电源 支持HDMI的显示器 c2a口usb数据线   如果嫌独立供电硬盘盒麻烦可以用蓝口U盘，后续步骤一样！  安装树莓派官方镜像烧录工具：https://www.raspberrypi.com/software/  格式化USB存储设备 ",
+          date: "Thu Feb 20 2025 09:06:21 GMT+0800",
+          updated: "Sun Jan 11 2026 21:42:09 GMT+0800",
+          cover: "https://veridianbyte.github.io/covers/bg3.webp",
         };
       </script>
         
