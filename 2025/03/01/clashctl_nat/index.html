@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://veridianbyte.github.io/2025/03/01/clashctl_nat/file-20260314140308143.png">
 <meta property="og:image" content="https://veridianbyte.github.io/2025/03/01/clashctl_nat/file-20260314140320431.png">
 <meta property="article:published_time" content="2025-03-01T07:33:43.000Z">
-<meta property="article:modified_time" content="2026-03-17T09:06:17.541Z">
+<meta property="article:modified_time" content="2026-03-17T09:15:35.408Z">
 <meta property="article:author" content="白菜">
 <meta property="article:tag" content="DHCP">
 <meta property="article:tag" content="NAT">
@@ -444,6 +444,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/systemd/system/mihomo.service</span><br></pre></td></tr></table></figure>
 <p>检查自己的路径是否正确</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Mihomo Transparent Proxy</span><br><span class="line">After=network-online.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=root</span><br><span class="line">ExecStart=/your/path/to/clashctl/bin/mihomo -d /your/path/to/clashctl/resources -f /your/path/to/clashctl/resources/runtime.yaml</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5</span><br><span class="line">LimitNOFILE=524288</span><br><span class="line"></span><br><span class="line">ExecStartPost=-/sbin/ip rule add fwmark 1 table 100</span><br><span class="line">ExecStartPost=-/sbin/ip route add <span class="built_in">local</span> 0.0.0.0/0 dev lo table 100</span><br><span class="line"></span><br><span class="line">ExecStopPost=-/sbin/ip rule del fwmark 1 table 100</span><br><span class="line">ExecStopPost=-/sbin/ip route del <span class="built_in">local</span> 0.0.0.0/0 dev lo table 100</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>重启后检查策略路由是否正常运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip rule show | grep 100</span><br></pre></td></tr></table></figure>
 <ul>
 <li>启动服务</li>
 </ul>
@@ -829,7 +831,7 @@
           description: "",
           stripContent: "拿树莓派做一个能代理网络家庭网关！   你能学到  从零搭建树莓派网关 树莓派系统烧录（UHS-1 及以上性能TF卡） 树莓派（ubuntu 2204 server）的网络设置   工具准备  树莓派 千兆+网线 无线AP tf卡（UHS-1 及以上性能）   写入系统 安装raspberry imager：https://www.raspberrypi.com/software/ 使用默认设置安装即可，路径根据自己的需要更改，完成后按照以下步骤进行：        系统配置  设置root用户",
           date: "Sat Mar 01 2025 15:33:43 GMT+0800",
-          updated: "Tue Mar 17 2026 17:06:17 GMT+0800",
+          updated: "Tue Mar 17 2026 17:15:35 GMT+0800",
           cover: "https://veridianbyte.github.io/covers/bg4.webp",
         };
       </script>
