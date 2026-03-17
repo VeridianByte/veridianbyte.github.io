@@ -9,7 +9,7 @@
   
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://veridianbyte.github.io';</script>
   <title>
-    树莓派通过USB硬盘盒启动 | ヾ(≧▽≦*)o飛鳥じんじん
+    通过USB硬盘盒启动树莓派 | ヾ(≧▽≦*)o飛鳥じんじん
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
@@ -19,7 +19,7 @@
 
     <meta name="description" content="tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树莓派通过USB硬盘盒启动">
+<meta property="og:title" content="通过USB硬盘盒启动树莓派">
 <meta property="og:url" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/index.html">
 <meta property="og:site_name" content="ヾ(≧▽≦*)o飛鳥じんじん">
 <meta property="og:description" content="tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。">
@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313205045896.png">
 <meta property="og:image" content="https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/file-20260313205051332.png">
 <meta property="article:published_time" content="2025-02-20T01:06:21.000Z">
-<meta property="article:modified_time" content="2026-03-17T01:56:03.592Z">
+<meta property="article:modified_time" content="2026-03-17T02:25:48.375Z">
 <meta property="article:author" content="白菜">
 <meta property="article:tag" content="Pi-Imager">
 <meta name="twitter:card" content="summary">
@@ -149,11 +149,11 @@
 </div>
 <header id="header" aria-label="Site header">
     <picture></picture>
-    <img  fetchpriority="high" src="https://veridianbyte.github.io/covers/bg3.webp" alt="树莓派通过USB硬盘盒启动">
+    <img  fetchpriority="high" src="https://veridianbyte.github.io/covers/bg3.webp" alt="通过USB硬盘盒启动树莓派">
   <div id="header-outer">
     <div id="header-title">
           <span id="logo">
-            <h1 data-aos="slide-up">树莓派通过USB硬盘盒启动</h1>
+            <h1 data-aos="slide-up">通过USB硬盘盒启动树莓派</h1>
           </span>
         <h2 id="subtitle-wrap" data-aos="slide-down">
         </h2>
@@ -414,11 +414,11 @@
     </div>
 </div>
         <div class="share-wrapper">
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=%E6%A0%91%E8%8E%93%E6%B4%BE%E9%80%9A%E8%BF%87USB%E7%A1%AC%E7%9B%98%E7%9B%92%E5%90%AF%E5%8A%A8&amp;desc=tf%E5%8D%A1%E5%8F%88%E6%85%A2%E5%AF%BF%E5%91%BD%E5%8F%88%E4%BD%8E%EF%BC%8C%E6%80%A7%E4%BB%B7%E6%AF%94%E5%A0%AA%E5%BF%A7%EF%BC%8C%E4%BD%BF%E7%94%A8nvme%E7%A1%AC%E7%9B%98%E7%9B%92%E5%B0%86%E8%80%81%E6%97%A7%E5%9B%BA%E6%80%81%E5%88%A9%E7%94%A8%E8%B5%B7%E6%9D%A5%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E6%AD%A3%E6%AD%A3%E5%A5%BD%E3%80%82&amp;source=https%3A%2F%2Fveridianbyte.github.io" target="_blank" rel="noopener noreferrer" title="树莓派通过USB硬盘盒启动">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=%E9%80%9A%E8%BF%87USB%E7%A1%AC%E7%9B%98%E7%9B%92%E5%90%AF%E5%8A%A8%E6%A0%91%E8%8E%93%E6%B4%BE&amp;desc=tf%E5%8D%A1%E5%8F%88%E6%85%A2%E5%AF%BF%E5%91%BD%E5%8F%88%E4%BD%8E%EF%BC%8C%E6%80%A7%E4%BB%B7%E6%AF%94%E5%A0%AA%E5%BF%A7%EF%BC%8C%E4%BD%BF%E7%94%A8nvme%E7%A1%AC%E7%9B%98%E7%9B%92%E5%B0%86%E8%80%81%E6%97%A7%E5%9B%BA%E6%80%81%E5%88%A9%E7%94%A8%E8%B5%B7%E6%9D%A5%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E6%AD%A3%E6%AD%A3%E5%A5%BD%E3%80%82&amp;source=https%3A%2F%2Fveridianbyte.github.io" target="_blank" rel="noopener noreferrer" title="通过USB硬盘盒启动树莓派">
       <div class="share-icon icon icon-qq">
       </div>
     </a>
-    <a href="javascript:;"  title="树莓派通过USB硬盘盒启动">
+    <a href="javascript:;"  title="通过USB硬盘盒启动树莓派">
       <div class="share-icon icon icon-weixin">
           <div id="share-weixin">
             <div class="share-weixin-dom">
@@ -714,13 +714,13 @@
       <script data-pjax>
         window.REIMU_POST = {
           author: "白菜",
-          title: "树莓派通过USB硬盘盒启动",
+          title: "通过USB硬盘盒启动树莓派",
           url: "https://veridianbyte.github.io/2025/02/20/raspi_usb_boot/",
           excerpt: "tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。",
           description: "",
           stripContent: "tf卡又慢寿命又低，性价比堪忧，使用nvme硬盘盒将老旧固态利用起来给树莓派使正正好。   你能学到  通过USB安装树莓派系统 初始化系统设置并优化 解决硬盘兼容性问题   工具准备  树莓派 空tf卡 一根micro hdmi线 一个带独立供电的移动硬盘盒 树莓派电源 支持HDMI的显示器 c2a口usb数据线   如果嫌独立供电硬盘盒麻烦可以用蓝口U盘，后续步骤一样！  安装树莓派官方镜像烧录工具：https://www.raspberrypi.com/software/  格式化USB存",
           date: "Thu Feb 20 2025 09:06:21 GMT+0800",
-          updated: "Tue Mar 17 2026 09:56:03 GMT+0800",
+          updated: "Tue Mar 17 2026 10:25:48 GMT+0800",
           cover: "https://veridianbyte.github.io/covers/bg3.webp",
         };
       </script>
