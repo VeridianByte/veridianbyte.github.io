@@ -1,0 +1,1187 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="true"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://veridianbyte.github.io';</script>
+  <title>
+    VLA 数学必备：从直觉到实作 | ヾ(≧▽≦*)o飛鳥じんじん
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic|Noto Serif SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="我们所经历的日常…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VLA 数学必备：从直觉到实作">
+<meta property="og:url" content="https://veridianbyte.github.io/2026/02/06/math_for_vla/index.html">
+<meta property="og:site_name" content="ヾ(≧▽≦*)o飛鳥じんじん">
+<meta property="og:description" content="我们所经历的日常…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-02-05T22:06:06.000Z">
+<meta property="article:modified_time" content="2026-02-24T05:14:34.000Z">
+<meta property="article:author" content="白菜">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="ヾ(≧▽≦*)o飛鳥じんじん" type="application/atom+xml"><link rel="alternate" href="/rss2.xml" title="ヾ(≧▽≦*)o飛鳥じんじん" type="application/rss+xml">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+      <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css" integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz+YI" crossorigin="anonymous">
+      
+<link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj+vDDLIL+xBGQU/voDBY5XE2lVh" crossorigin="anonymous">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+            <div class="main-nav-icon icon ">
+                  <img src="/images/EVA-00.png" alt="home icon" style="height: 1em;">
+            </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+            <div class="main-nav-icon icon ">
+                  <img src="/images/EVA-01.png" alt="archives icon" style="height: 1em;">
+            </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+            <div class="main-nav-icon icon ">
+                  <img src="/images/EVA-02.png" alt="about icon" style="height: 1em;">
+            </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+            <div class="main-nav-icon icon ">
+                  <img src="/images/gua.png" alt="friend icon" style="height: 1em;">
+            </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="https://veridianbyte.github.io/covers/bg6.webp" alt="VLA 数学必备：从直觉到实作">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">VLA 数学必备：从直觉到实作</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+      <meting-js
+        theme="var(--color-link)"
+        id="17760854227"
+        server="netease"
+        type="playlist"
+        
+        
+        autoplay="true"
+        loop="all"
+        
+        preload="auto"
+        volume="0.9"
+        
+        list-folded="true"
+        
+      ></meting-js>
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vla-%E6%95%B0%E5%AD%A6%E5%BF%85%E5%A4%87%E4%BB%8E%E7%9B%B4%E8%A7%89%E5%88%B0%E5%AE%9E%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text"> VLA 数学必备：从直觉到实作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text"> 目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E5%8F%98%E6%8D%A2"><span class="toc-number">1.2.</span> <span class="toc-text"> 1. 线性代数：空间与变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%A7%AF%E4%B8%8E%E7%9B%B8%E4%BC%BC%E5%BA%A6"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 内积与相似度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2-linear-layer"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 线性变换 (Linear Layer)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E7%A7%A9%E5%88%86%E8%A7%A3-lora"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 低秩分解 (LoRA)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#svd%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3"><span class="toc-number">1.2.4.</span> <span class="toc-text"> SVD（奇异值分解）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BE%AE%E7%A7%AF%E5%88%86%E4%B8%8E%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.</span> <span class="toc-text"> 2. 微积分与优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99-backpropagation-%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 链式法则 (Backpropagation 的核心)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%85%E5%8F%AF%E6%AF%94%E7%9F%A9%E9%98%B5-jacobian"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 雅可比矩阵 (Jacobian)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 梯度下降</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3d-%E5%87%A0%E4%BD%95%E4%B8%8E%E6%97%8B%E8%BD%AC"><span class="toc-number">1.4.</span> <span class="toc-text"> 3. 3D 几何与旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#se3-%E9%BD%90%E6%AC%A1%E5%8F%98%E6%8D%A2"><span class="toc-number">1.4.1.</span> <span class="toc-text"> SE(3) 齐次变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC%E8%A1%A8%E7%A4%BA%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 旋转表示：为什么不用欧拉角？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A6%82%E7%8E%87%E4%B8%8E%E4%BF%A1%E6%81%AF%E8%AE%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 4. 概率与信息论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vla-%E7%9A%84%E6%A6%82%E7%8E%87%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.5.1.</span> <span class="toc-text"> VLA 的概率本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kl-%E6%95%A3%E5%BA%A6"><span class="toc-number">1.5.2.</span> <span class="toc-text"> KL 散度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%86%B5"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 信息熵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elbo%E5%8F%98%E5%88%86%E4%B8%8B%E7%95%8C"><span class="toc-number">1.5.4.</span> <span class="toc-text"> ELBO（变分下界）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-transformer-%E6%95%B0%E5%AD%A6"><span class="toc-number">1.6.</span> <span class="toc-text"> 5. Transformer 数学</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%A9%E6%94%BE%E7%82%B9%E7%A7%AF%E6%B3%A8%E6%84%8F%E5%8A%9B"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 缩放点积注意力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flash-attention"><span class="toc-number">1.6.2.</span> <span class="toc-text"> Flash Attention</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E6%89%A9%E6%95%A3%E4%B8%8E-flow-matching"><span class="toc-number">1.7.</span> <span class="toc-text"> 6. 生成模型：扩散与 Flow Matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 为什么需要生成模型？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#diffusion%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.7.2.</span> <span class="toc-text"> Diffusion（扩散模型）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flow-matching%E6%B5%81%E5%8C%B9%E9%85%8D"><span class="toc-number">1.7.3.</span> <span class="toc-text"> Flow Matching（流匹配）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.8.</span> <span class="toc-text"> 7. 强化学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 贝尔曼方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 策略梯度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ppo-%E8%A3%81%E5%89%AA"><span class="toc-number">1.8.3.</span> <span class="toc-text"> PPO 裁剪</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A7%E5%88%B6"><span class="toc-number">1.9.</span> <span class="toc-text"> 8. 机器人控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pd-%E6%8E%A7%E5%88%B6"><span class="toc-number">1.9.1.</span> <span class="toc-text"> PD 控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 卡尔曼滤波</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E4%BD%9C%E5%B9%B3%E6%BB%91"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 动作平滑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E8%AE%AD%E7%BB%83%E5%B7%A5%E7%A8%8B"><span class="toc-number">1.10.</span> <span class="toc-text"> 9. 训练工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E8%A3%81%E5%89%AA"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 梯度裁剪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#adam-%E4%BC%98%E5%8C%96%E5%99%A8"><span class="toc-number">1.10.2.</span> <span class="toc-text"> Adam 优化器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#temperature-scaling"><span class="toc-number">1.10.3.</span> <span class="toc-text"> Temperature Scaling</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%91%A8%E9%80%9F%E6%88%90%E6%B8%85%E5%8D%95"><span class="toc-number">1.11.</span> <span class="toc-text"> 📅 2 周速成清单</span></a></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="白菜" class="lazyload">
+  <div class="sidebar-author-name">白菜</div>
+  <div class="sidebar-description">(❁´◡`❁)</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">6</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">7</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">12</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/VeridianByte itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/688602329 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+          <div class="sidebar-menu-icon icon ">
+                <img src="/images/EVA-00.png" alt="home icon" style="width: 1em;">
+          </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+          <div class="sidebar-menu-icon icon ">
+                <img src="/images/EVA-01.png" alt="archives icon" style="width: 1em;">
+          </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+          <div class="sidebar-menu-icon icon ">
+                <img src="/images/EVA-02.png" alt="about icon" style="width: 1em;">
+          </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+          <div class="sidebar-menu-icon icon ">
+                <img src="/images/gua.png" alt="friend icon" style="width: 1em;">
+          </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-math_for_vla" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2026-02-05T22:06:06.000Z" itemprop="datePublished">2026-02-06</time>
+    <time style="display: none;" id="post-update-time">2026-02-24</time>
+  </span>
+</div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p>我们所经历的日常…</p>
+<span id="more"></span>
+<h1 id="vla-数学必备从直觉到实作"><a class="markdownIt-Anchor" href="#vla-数学必备从直觉到实作"></a> VLA 数学必备：从直觉到实作</h1>
+<blockquote>
+<p><strong>这不是数学教材</strong>，而是&quot;为了能看懂 VLA 论文、写出 loss、调好机器人&quot;的实践清单。<br />
+每个公式都配有 <strong>大白话解释</strong> + <strong>在 VLA 里怎么用</strong>。<br />
+转自：<a target="_blank" rel="noopener" href="https://github.com/sou350121/VLA-Handbook/blob/main/theory/foundation/math_for_vla.md">https://github.com/sou350121/VLA-Handbook/blob/main/theory/foundation/math_for_vla.md</a></p>
+</blockquote>
+<hr />
+<h2 id="目录"><a class="markdownIt-Anchor" href="#目录"></a> 目录</h2>
+<ul>
+<li><a href="#1-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E5%8F%98%E6%8D%A2">1. 线性代数</a></li>
+<li><a href="#2-%E5%BE%AE%E7%A7%AF%E5%88%86%E4%B8%8E%E4%BC%98%E5%8C%96">2. 微积分与优化</a></li>
+<li><a href="#3-3d-%E5%87%A0%E4%BD%95%E4%B8%8E%E6%97%8B%E8%BD%AC">3. 3D 几何与旋转</a></li>
+<li><a href="#4-%E6%A6%82%E7%8E%87%E4%B8%8E%E4%BF%A1%E6%81%AF%E8%AE%BA">4. 概率与信息论</a></li>
+<li><a href="#5-transformer-%E6%95%B0%E5%AD%A6">5. Transformer 数学</a></li>
+<li><a href="#6-%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E6%89%A9%E6%95%A3%E4%B8%8E-flow-matching">6. 生成模型</a></li>
+<li><a href="#7-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0">7. 强化学习</a></li>
+<li><a href="#8-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A7%E5%88%B6">8. 机器人控制</a></li>
+<li><a href="#9-%E8%AE%AD%E7%BB%83%E5%B7%A5%E7%A8%8B">9. 训练工程</a></li>
+<li><a href="#-2-%E5%91%A8%E9%80%9F%E6%88%90%E6%B8%85%E5%8D%95">速成清单</a></li>
+</ul>
+<hr />
+<h2 id="1-线性代数空间与变换"><a class="markdownIt-Anchor" href="#1-线性代数空间与变换"></a> 1. 线性代数：空间与变换</h2>
+<h3 id="内积与相似度"><a class="markdownIt-Anchor" href="#内积与相似度"></a> 内积与相似度</h3>
+<p>$$\text{sim}(A, B) &#x3D; A \cdot B &#x3D; \sum_i A_i B_i &#x3D; \|A\| \, \|B\| \cos\theta
+$$</p><p><strong>大白话</strong>：两个特征向量的&quot;夹角&quot;。对应项相乘再加总，结果大 = 方向一致 = “长得像”。</p>
+<p><strong>VLA 里怎么用</strong>：Attention 机制中 Q 和 K 的匹配就是在算内积。CLIP 对比学习也是用余弦相似度把&quot;图像&quot;和&quot;文字&quot;拉近。</p>
+<hr />
+<h3 id="线性变换-linear-layer"><a class="markdownIt-Anchor" href="#线性变换-linear-layer"></a> 线性变换 (Linear Layer)</h3>
+<p>$$y &#x3D; Wx + b
+$$</p><ul>
+<li><code>x</code>：输入特征（如视觉 embedding）</li>
+<li><code>W</code>：权重矩阵——一台&quot;空间搬运机&quot;</li>
+<li><code>y</code>：输出特征（如动作空间 embedding）</li>
+</ul>
+<p><strong>大白话</strong>：通过矩阵 <code>W</code> 把信息从一个空间搬到另一个空间。VLA 里就是把&quot;看到的东西&quot;搬到&quot;动作的语言&quot;。</p>
+<hr />
+<h3 id="低秩分解-lora"><a class="markdownIt-Anchor" href="#低秩分解-lora"></a> 低秩分解 (LoRA)</h3>
+<p>$$\Delta W &#x3D; AB, \quad A \in \mathbb{R}^{d \times r}, \; B \in \mathbb{R}^{r \times k}, \quad r \ll d
+$$</p><p><strong>大白话</strong>：巨大的权重更新 <code>ΔW</code> 被拆成两个&quot;窄瓶颈&quot;矩阵相乘。只学最核心的变化方向，省 90%+ 显存。</p>
+<p><strong>VLA 里怎么用</strong>：OpenVLA 用 QLoRA（4-bit 量化 + LoRA）在消费级显卡上微调 7B 模型。π0.5 用 LoRA 做跨任务适配。<br />
+→ 详见 <a href="peft_lora.md">PEFT &amp; LoRA</a> · <a href="dora_weight_decomposed_low_rank_adaptation.md">DoRA</a></p>
+<hr />
+<h3 id="svd奇异值分解"><a class="markdownIt-Anchor" href="#svd奇异值分解"></a> SVD（奇异值分解）</h3>
+<p>$$A &#x3D; U \Sigma V^\top
+$$</p><ul>
+<li><code>U</code>：左奇异向量（数据的主方向）</li>
+<li><code>Σ</code>：奇异值对角矩阵（每个方向的&quot;重要程度&quot;）</li>
+<li><code>V</code>：右奇异向量</li>
+</ul>
+<p><strong>大白话</strong>：把任何矩阵拆成&quot;旋转 → 拉伸 → 旋转&quot;三步。扔掉小的奇异值 = 去噪 + 压缩。</p>
+<p><strong>VLA 里怎么用</strong>：模型压缩（只保留前 k 个奇异值）、特征分析（找数据的主成分）。</p>
+<hr />
+<h2 id="2-微积分与优化"><a class="markdownIt-Anchor" href="#2-微积分与优化"></a> 2. 微积分与优化</h2>
+<h3 id="链式法则-backpropagation-的核心"><a class="markdownIt-Anchor" href="#链式法则-backpropagation-的核心"></a> 链式法则 (Backpropagation 的核心)</h3>
+<p>$$\frac{\partial \mathcal{L}}{\partial x} &#x3D; \frac{\partial \mathcal{L}}{\partial y} \cdot \frac{\partial y}{\partial x}
+$$</p><p><strong>大白话</strong>：最终错误 <code>L</code> 一级级往回追究责任。每个参数对错误贡献多少？一层层乘回去就知道了。整个反向传播就是在用链式法则。</p>
+<hr />
+<h3 id="雅可比矩阵-jacobian"><a class="markdownIt-Anchor" href="#雅可比矩阵-jacobian"></a> 雅可比矩阵 (Jacobian)</h3>
+<p>$$J(q) &#x3D; \frac{\partial f(q)}{\partial q}, \quad \dot{x} &#x3D; J(q)\,\dot{q}
+$$</p><ul>
+<li><code>q</code>：关节角度向量</li>
+<li><code>x</code>：末端执行器位置</li>
+<li><code>J</code>：关节→末端的&quot;换算率&quot;</li>
+</ul>
+<p><strong>大白话</strong>：关节转了一点点，手指在空间里飘了多远、往哪飘？Jacobian 就是这个&quot;换算矩阵&quot;。</p>
+<p><strong>VLA 里怎么用</strong>：</p>
+<ul>
+<li>逆运动学（IK）：已知手指要去哪，反推关节怎么转</li>
+<li>力控制：关节扭矩 → 末端力的映射</li>
+<li>VLA 输出的 <code>Δx</code>（末端位移）需要通过 <code>J⁻¹</code> 转成关节命令</li>
+</ul>
+<hr />
+<h3 id="梯度下降"><a class="markdownIt-Anchor" href="#梯度下降"></a> 梯度下降</h3>
+<p>$$\theta_{t+1} &#x3D; \theta_t - \eta \nabla_\theta \mathcal{L}
+$$</p><p><strong>大白话</strong>：站在山坡上，往最陡的下坡方向走一步（步长 η）。重复直到走到谷底。所有深度学习训练都是在做这件事。</p>
+<hr />
+<h2 id="3-3d-几何与旋转"><a class="markdownIt-Anchor" href="#3-3d-几何与旋转"></a> 3. 3D 几何与旋转</h2>
+<h3 id="se3-齐次变换"><a class="markdownIt-Anchor" href="#se3-齐次变换"></a> SE(3) 齐次变换</h3>
+<p>$$T &#x3D; \begin{bmatrix} R &amp; t \\ 0 &amp; 1 \end{bmatrix} \in SE(3), \quad P_{\text{world}} &#x3D; T_{\text{cam}}^{\text{world}} \cdot P_{\text{cam}}
+$$</p><ul>
+<li><code>R</code>：3×3 旋转矩阵（SO(3)）</li>
+<li><code>t</code>：3×1 平移向量</li>
+<li><code>T</code>：4×4 齐次变换矩阵</li>
+</ul>
+<p><strong>大白话</strong>：相机看到一个点在 <code>P_cam</code>，通过变换矩阵 <code>T</code> 就能算出它在世界坐标系的位置。这是机器人&quot;手眼协调&quot;的数学基础。</p>
+<p><strong>VLA 里怎么用</strong>：</p>
+<ul>
+<li>相机标定：<code>T_cam_to_base</code> 把像素坐标变成机械臂坐标</li>
+<li>VLA 输出的 action 通常是 <code>(Δx, Δy, Δz, Δroll, Δpitch, Δyaw)</code> 的 SE(3) 增量</li>
+</ul>
+<hr />
+<h3 id="旋转表示为什么不用欧拉角"><a class="markdownIt-Anchor" href="#旋转表示为什么不用欧拉角"></a> 旋转表示：为什么不用欧拉角？</h3>
+<table>
+<thead>
+<tr>
+<th>表示</th>
+<th style="text-align:center">维度</th>
+<th style="text-align:center">连续性</th>
+<th style="text-align:center">万向锁</th>
+<th style="text-align:center">VLA 常用？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>欧拉角 (RPY)</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">❌ 不连续</td>
+<td style="text-align:center">❌ 有</td>
+<td style="text-align:center">仅人类界面</td>
+</tr>
+<tr>
+<td>四元数</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">🔶 需归一化</td>
+<td style="text-align:center">✅ 无</td>
+<td style="text-align:center">一般</td>
+</tr>
+<tr>
+<td>旋转矩阵</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">✅ 连续</td>
+<td style="text-align:center">✅ 无</td>
+<td style="text-align:center">一般</td>
+</tr>
+<tr>
+<td><strong>6D 旋转</strong></td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">✅ 连续</td>
+<td style="text-align:center">✅ 无</td>
+<td style="text-align:center"><strong>推荐</strong></td>
+</tr>
+<tr>
+<td>轴角 (Axis-Angle)</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">❌ 不连续</td>
+<td style="text-align:center">✅ 无</td>
+<td style="text-align:center">π0 用</td>
+</tr>
+</tbody>
+</table>
+<p><strong>6D 旋转</strong> 取旋转矩阵的前两列（6 个数），第三列通过叉积恢复：</p>
+<p>$$c_3 &#x3D; c_1 \times c_2, \quad R &#x3D; [c_1 \mid c_2 \mid c_3]
+$$</p><p><strong>大白话</strong>：神经网络预测 6 个连续的数，比预测 3 个不连续的欧拉角容易得多。这就是为什么几乎所有 VLA 论文都用 6D 旋转表示。</p>
+<blockquote>
+<p>💡 <strong>实践坑</strong>：π0 系列用轴角（axis-angle）+ 归一化，OpenVLA 用离散化欧拉角，RDT 用 6D。选错表示会导致训练不收敛。</p>
+</blockquote>
+<hr />
+<h2 id="4-概率与信息论"><a class="markdownIt-Anchor" href="#4-概率与信息论"></a> 4. 概率与信息论</h2>
+<h3 id="vla-的概率本质"><a class="markdownIt-Anchor" href="#vla-的概率本质"></a> VLA 的概率本质</h3>
+<p>$$\pi(a \mid s, g) &#x3D; P(\text{action} \mid \text{image}, \text{instruction})
+$$</p><p><strong>大白话</strong>：VLA 的本质就是一个条件概率模型。给定当前画面 <code>s</code> 和语言指令 <code>g</code>，输出每个动作 <code>a</code> 的可能性。训练就是让这个概率分布尽量接近专家的分布。</p>
+<hr />
+<h3 id="kl-散度"><a class="markdownIt-Anchor" href="#kl-散度"></a> KL 散度</h3>
+<p>$$D_{\text{KL}}(p \| q) &#x3D; \sum_x p(x) \log \frac{p(x)}{q(x)}
+$$</p><p><strong>大白话</strong>：衡量两个概率分布 <code>p</code> 和 <code>q</code> 有多不一样。KL = 0 表示完全一致。</p>
+<p><strong>VLA 里怎么用</strong>：</p>
+<ul>
+<li><strong>CVAE 训练</strong>（ACT 模型）：KL 约束隐变量 z 不要偏离先验太远</li>
+<li><strong>RL 后训练</strong>（π*0.6 RECAP）：约束 RL 策略不要偏离 BC 策略太远</li>
+<li><strong>知识蒸馏</strong>：学生模型的输出分布要接近教师模型</li>
+</ul>
+<hr />
+<h3 id="信息熵"><a class="markdownIt-Anchor" href="#信息熵"></a> 信息熵</h3>
+<p>$$H(X) &#x3D; -\sum_i P(x_i) \log P(x_i)
+$$</p><p><strong>大白话</strong>：熵大 = 模型很迷茫（乱猜），熵小 = 非常有把握。</p>
+<p><strong>VLA 里怎么用</strong>：Token 类 VLA（RT-2）用 temperature 控制采样熵。温度低 → 只选最高概率的动作（保守）；温度高 → 多探索。</p>
+<hr />
+<h3 id="elbo变分下界"><a class="markdownIt-Anchor" href="#elbo变分下界"></a> ELBO（变分下界）</h3>
+<p>$$\log p(x) \geq \mathbb{E}_{q(z|x)} \big[\log p(x|z)\big] - D_{\text{KL}}\big(q(z|x) \| p(z)\big)
+$$</p><p><strong>大白话</strong>：我们想最大化数据的概率 <code>p(x)</code>，但直接算太难。ELBO 给了一个可以优化的下界：第一项是&quot;重建得多好&quot;，第二项是&quot;隐变量 z 别太离谱&quot;。</p>
+<p><strong>VLA 里怎么用</strong>：<strong>ACT 模型的核心</strong>。编码器把示范轨迹压缩成隐变量 z（意图），解码器从 z 重建动作序列。ELBO 平衡重建精度和隐空间正则化。<br />
+→ 详见 <a href="../vla-core/act.md">ACT 详解</a></p>
+<hr />
+<h2 id="5-transformer-数学"><a class="markdownIt-Anchor" href="#5-transformer-数学"></a> 5. Transformer 数学</h2>
+<h3 id="缩放点积注意力"><a class="markdownIt-Anchor" href="#缩放点积注意力"></a> 缩放点积注意力</h3>
+<p>$$\text{Attention}(Q, K, V) &#x3D; \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right) V
+$$</p><ul>
+<li><code>Q</code>（Query）：我在找什么？（来自当前 token）</li>
+<li><code>K</code>（Key）：这里有什么？（来自所有 token）</li>
+<li><code>V</code>（Value）：如果匹配上了，给我什么信息？</li>
+<li><code>√d_k</code>：缩放因子，防止内积太大导致 softmax 饱和</li>
+</ul>
+<p><strong>大白话</strong>：Query 去每个 Key 那里&quot;问一嘴&quot;——你跟我相关吗？相关度高的 Key 对应的 Value 权重就大。最后加权求和得到输出。</p>
+<p><strong>VLA 里怎么用</strong>：</p>
+<ul>
+<li><strong>Self-attention</strong>：图像 patch 之间互相看（ViT）</li>
+<li><strong>Cross-attention</strong>：语言 token 去图像里找对应物体（vision-language fusion）</li>
+<li><strong>Action cross-attention</strong>：动作 query 去视觉特征里找&quot;该往哪伸手&quot;（π0 的 action head）</li>
+</ul>
+<hr />
+<h3 id="flash-attention"><a class="markdownIt-Anchor" href="#flash-attention"></a> Flash Attention</h3>
+<p>$$\text{tiling}: \quad Q_i K_j^\top \text{ 在 SRAM 中计算，不存完整 } N \times N \text{ 矩阵}
+$$</p><p><strong>大白话</strong>：标准 Attention 要存一个 N×N 的注意力矩阵（N = 序列长度），显存爆炸。Flash Attention 把它切成小块在 GPU 高速缓存里算，显存从 O(N²) 降到 O(N)，速度还快 2-4x。</p>
+<p>→ 详见 <a href="flash_attention.md">Flash Attention</a></p>
+<hr />
+<h2 id="6-生成模型扩散与-flow-matching"><a class="markdownIt-Anchor" href="#6-生成模型扩散与-flow-matching"></a> 6. 生成模型：扩散与 Flow Matching</h2>
+<blockquote>
+<p>这是 VLA 的 <strong>Action Head</strong> 核心数学。动作不是&quot;预测&quot;出来的，是&quot;生成&quot;出来的。</p>
+</blockquote>
+<h3 id="为什么需要生成模型"><a class="markdownIt-Anchor" href="#为什么需要生成模型"></a> 为什么需要生成模型？</h3>
+<p>同一个任务往往有多条正确路径（从左边绕 or 从右边绕）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MSE 回归：预测两条路的&quot;平均&quot; → 撞到障碍物 💥</span><br><span class="line">生成模型：采样其中一条完整路径 → 安全到达 ✅</span><br></pre></td></tr></table></figure>
+<p>这就是为什么 VLA 不用简单回归，而用 Diffusion 或 Flow Matching 来<strong>生成</strong>动作。</p>
+<hr />
+<h3 id="diffusion扩散模型"><a class="markdownIt-Anchor" href="#diffusion扩散模型"></a> Diffusion（扩散模型）</h3>
+<p><strong>前向过程</strong>（加噪）：</p>
+<p>$$x_t &#x3D; \sqrt{\bar{\alpha}_t}\, x_0 + \sqrt{1 - \bar{\alpha}_t}\, \epsilon, \quad \epsilon \sim \mathcal{N}(0, I)
+$$</p><p><strong>反向过程</strong>（去噪 = 生成）：</p>
+<p>$$\hat{\epsilon}_\theta(x_t, t) \approx \epsilon, \quad x_{t-1} &#x3D; \frac{1}{\sqrt{\alpha_t}}\left(x_t - \frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\hat{\epsilon}_\theta\right) + \sigma_t z
+$$</p><p><strong>训练目标</strong>：</p>
+<p>$$\mathcal{L}_{\text{diffusion}} &#x3D; \mathbb{E}_{t, x_0, \epsilon}\left[\|\epsilon - \hat{\epsilon}_\theta(x_t, t)\|^2\right]
+$$</p><p><strong>大白话</strong>：</p>
+<ol>
+<li>把干净的动作 <code>x₀</code> 逐步加噪声，变成纯噪声 <code>x_T</code></li>
+<li>训练一个网络学会&quot;去噪&quot;——给它带噪声的 <code>x_t</code>，让它预测加了多少噪声 <code>ε</code></li>
+<li>生成时：从纯噪声开始，反复去噪，一步步&quot;画出&quot;干净的动作</li>
+</ol>
+<p><strong>VLA 里怎么用</strong>：RDT、Octo、Diffusion Policy 都用这个。缺点：需要多步去噪（10-100 步），推理慢。</p>
+<hr />
+<h3 id="flow-matching流匹配"><a class="markdownIt-Anchor" href="#flow-matching流匹配"></a> Flow Matching（流匹配）</h3>
+<p><strong>核心思想</strong>：在噪声 <code>x₁</code> 和目标 <code>x₀</code> 之间画一条直线，学习沿着这条线的&quot;速度场&quot;。</p>
+<p><strong>速度场</strong>：</p>
+<p>$$v_t &#x3D; x_0 - x_1 \quad \text{(最简单的线性插值)}
+$$</p><p>$$x_t &#x3D; (1-t)\,x_1 + t\,x_0
+$$</p><p><strong>训练目标</strong>：</p>
+<p>$$\mathcal{L}_{\text{FM}} &#x3D; \mathbb{E}_{t, x_0, x_1}\left[\|v_\theta(x_t, t) - (x_0 - x_1)\|^2\right]
+$$</p><p><strong>生成</strong>（ODE 求解）：</p>
+<p>$$\frac{dx}{dt} &#x3D; v_\theta(x_t, t), \quad x_0 &#x3D; x_1 + \int_0^1 v_\theta(x_t, t)\,dt
+$$</p><p><strong>大白话</strong>：</p>
+<ol>
+<li>在噪声和目标之间拉一条直线</li>
+<li>训练网络预测&quot;当前位置该往哪走&quot;（速度场 v）</li>
+<li>生成时：从噪声出发，沿着学到的速度场&quot;滑&quot;到目标</li>
+</ol>
+<p><strong>vs Diffusion</strong>：Flow Matching 的路径是直线（不是弯曲的扩散路径），所以只需要 1-5 步就能生成，比 Diffusion 快 10x+。</p>
+<p><strong>VLA 里怎么用</strong>：<strong>π0 系列的核心</strong>。π0 用 Flow Matching 作为 Action Head，实现 30Hz 的实时动作生成。<br />
+→ 详见 <a href="../diffusion-flow/diffusion_policy.md">Diffusion Policy</a> · <a href="../vla-core/pi0_flow_matching.md">π0 Flow Matching</a> · <a href="../diffusion-flow/the_compression_gap_why_discrete_tokenization_limits_vision_dissection.md">Compression Gap</a></p>
+<hr />
+<h2 id="7-强化学习"><a class="markdownIt-Anchor" href="#7-强化学习"></a> 7. 强化学习</h2>
+<h3 id="贝尔曼方程"><a class="markdownIt-Anchor" href="#贝尔曼方程"></a> 贝尔曼方程</h3>
+<p>$$V(s) &#x3D; \max_a \left[R(s,a) + \gamma \, V(s&#39;)\right]
+$$</p><p><strong>大白话</strong>：现在的价值 = 现在的甜头 + 打折后的未来期望。<code>γ</code>（折扣因子）越小，机器人越&quot;急功近利&quot;。</p>
+<hr />
+<h3 id="策略梯度"><a class="markdownIt-Anchor" href="#策略梯度"></a> 策略梯度</h3>
+<p>$$\nabla_\theta J &#x3D; \mathbb{E}_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a|s) \cdot A(s,a)\right]
+$$</p><ul>
+<li><code>π_θ(a|s)</code>：策略（模型输出的动作概率）</li>
+<li><code>A(s,a)</code>：优势函数（这次比平均好多少）</li>
+</ul>
+<p><strong>大白话</strong>：结果比平均好（A &gt; 0）→ 给这次动作的概率加仓；搞砸了（A &lt; 0）→ 减仓。这就是 REINFORCE 算法。</p>
+<hr />
+<h3 id="ppo-裁剪"><a class="markdownIt-Anchor" href="#ppo-裁剪"></a> PPO 裁剪</h3>
+<p>$$\mathcal{L}_{\text{PPO}} &#x3D; -\min\left(r_t A_t, \; \text{clip}(r_t, 1-\epsilon, 1+\epsilon)\,A_t\right)
+$$</p><p>$$r_t &#x3D; \frac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}
+$$</p><p><strong>大白话</strong>：策略更新时，如果新策略和旧策略差太多（比率 <code>r</code> 偏离 1 太远），就裁掉。防止一步迈太大翻车。</p>
+<p><strong>VLA 里怎么用</strong>：π*0.6 的 RECAP 算法用了类似思路——offline RL 复盘时约束新策略不要偏离 BC 策略太远。<br />
+→ 详见 <a href="../rl/vla_rl_practical_guide.md">VLA+RL 实战</a></p>
+<hr />
+<h2 id="8-机器人控制"><a class="markdownIt-Anchor" href="#8-机器人控制"></a> 8. 机器人控制</h2>
+<h3 id="pd-控制"><a class="markdownIt-Anchor" href="#pd-控制"></a> PD 控制</h3>
+<p>$$u &#x3D; K_p \, e + K_d \, \dot{e}, \quad e &#x3D; x_{\text{target}} - x_{\text{current}}
+$$</p><p><strong>大白话</strong>：</p>
+<ul>
+<li><code>Kp · e</code>：离目标远就使劲追（比例项）</li>
+<li><code>Kd · ė</code>：快到了就踩刹车（微分项 = 阻尼）</li>
+</ul>
+<p><strong>VLA 里怎么用</strong>：VLA 输出的是&quot;目标位置&quot;（position setpoint），底层控制器用 PD 把关节驱动到那里。Figure Helix 02 的 S0 层就是 1kHz 的 PD 控制。</p>
+<hr />
+<h3 id="卡尔曼滤波"><a class="markdownIt-Anchor" href="#卡尔曼滤波"></a> 卡尔曼滤波</h3>
+<p>$$\hat{x}_k &#x3D; \hat{x}_k^- + K_k(z_k - H\hat{x}_k^-)
+$$</p><ul>
+<li><code>K_k</code>：卡尔曼增益（&quot;该信谁&quot;的权重）</li>
+<li><code>z_k</code>：传感器测量值</li>
+<li><code>ĥx⁻_k</code>：模型预测值</li>
+</ul>
+<p><strong>大白话</strong>：模型预测说手臂在 A，传感器说手臂在 B。谁准听谁的——卡尔曼增益 K 自动算出最优折中。</p>
+<hr />
+<h3 id="动作平滑"><a class="markdownIt-Anchor" href="#动作平滑"></a> 动作平滑</h3>
+<p>$$\mathcal{L}_{\text{smooth}} &#x3D; \sum_t \|a_{t+1} - a_t\|^2 + \lambda \|a_{t+2} - 2a_{t+1} + a_t\|^2
+$$</p><p><strong>大白话</strong>：惩罚相邻动作的突变（一阶）和加速度的突变（二阶）。让机器人动起来像丝绸一样顺滑，不抖。</p>
+<hr />
+<h2 id="9-训练工程"><a class="markdownIt-Anchor" href="#9-训练工程"></a> 9. 训练工程</h2>
+<h3 id="梯度裁剪"><a class="markdownIt-Anchor" href="#梯度裁剪"></a> 梯度裁剪</h3>
+<p>$$g \leftarrow g \cdot \min\left(1, \frac{c}{\|g\|}\right)
+$$</p><p><strong>大白话</strong>：梯度太大就等比例缩小到阈值 <code>c</code>，防止权重被&quot;踢飞&quot;。几乎所有 VLA 训练都开梯度裁剪。</p>
+<hr />
+<h3 id="adam-优化器"><a class="markdownIt-Anchor" href="#adam-优化器"></a> Adam 优化器</h3>
+<p>$$m_t &#x3D; \beta_1 m_{t-1} + (1-\beta_1) g_t \quad \text{(动量)}
+$$</p><p>$$v_t &#x3D; \beta_2 v_{t-1} + (1-\beta_2) g_t^2 \quad \text{(自适应学习率)}
+$$</p><p>$$\theta_t &#x3D; \theta_{t-1} - \eta \frac{m_t}{\sqrt{v_t} + \epsilon}
+$$</p><p><strong>大白话</strong>：</p>
+<ul>
+<li><code>m</code>：看看之前几步的梯度方向（惯性），避免来回摆</li>
+<li><code>v</code>：看看这个参数的梯度波动大不大，波动大的走慢点</li>
+<li>结合起来：方向稳 + 步长自适应。VLA 训练标配。</li>
+</ul>
+<hr />
+<h3 id="temperature-scaling"><a class="markdownIt-Anchor" href="#temperature-scaling"></a> Temperature Scaling</h3>
+<p>$$P(a_i) &#x3D; \frac{\exp(z_i &#x2F; \tau)}{\sum_j \exp(z_j &#x2F; \tau)}
+$$</p><p><strong>大白话</strong>：温度 <code>τ</code> 控制动作选择的&quot;保守 vs 冒险&quot;：</p>
+<ul>
+<li><code>τ → 0</code>：只选最高分动作（贪心）</li>
+<li><code>τ = 1</code>：按原始概率采样</li>
+<li><code>τ → ∞</code>：完全随机</li>
+</ul>
+<hr />
+<h2 id="2-周速成清单"><a class="markdownIt-Anchor" href="#2-周速成清单"></a> 📅 2 周速成清单</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">天数</th>
+<th>主题</th>
+<th>实践任务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1-2</td>
+<td>线性代数</td>
+<td>手推 LoRA 的参数节省量；用 NumPy 实现 SVD 压缩一张图</td>
+</tr>
+<tr>
+<td style="text-align:center">3-4</td>
+<td>3D 几何</td>
+<td>实现 SE(3) 坐标变换；写 6D→旋转矩阵的转换代码</td>
+</tr>
+<tr>
+<td style="text-align:center">5-6</td>
+<td>概率论</td>
+<td>推导 MSE = 高斯 NLL 的等价性；实现一个带重参数化的 VAE</td>
+</tr>
+<tr>
+<td style="text-align:center">7-8</td>
+<td>Transformer</td>
+<td>手绘 Q·K·V 匹配过程；从零实现 scaled dot-product attention</td>
+</tr>
+<tr>
+<td style="text-align:center">9-10</td>
+<td>生成模型</td>
+<td>对比 Diffusion vs Flow Matching 的代码（&lt;50 行）；理清前向过程</td>
+</tr>
+<tr>
+<td style="text-align:center">11-12</td>
+<td>RL</td>
+<td>理解 PPO clip 的逻辑；写一个 CartPole 的 REINFORCE</td>
+</tr>
+<tr>
+<td style="text-align:center">13-14</td>
+<td>联调</td>
+<td>在一个训练循环中加入梯度裁剪 + EMA + 动作平滑，观察曲线变化</td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+    </div>
+    <footer class="article-footer">
+        <blockquote class="article-copyright">
+    <p><strong><span class="icon-user icon"></span>本文作者：</strong>白菜</p>
+    <p><strong><span class="icon-link icon"></span>本文链接：</strong><a href="https://veridianbyte.github.io/2026/02/06/math_for_vla/">https://veridianbyte.github.io/2026/02/06/math_for_vla/</a></p>
+    
+    
+    
+    <p><strong><span class="icon-copyright icon"></span>本文版权：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> 许可协议。转载请注明出处！</p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  </blockquote>
+        <div class="sponsor-wrapper">
+  <div class="sponsor-button">
+      <div class="sponsor-icon "></div>
+    <div class="sponsor-title">赞助</div>
+      <div class="sponsor-icon "></div>
+  </div>
+  <div class="sponsor-tip">请作者喝杯咖啡吧</div>
+    <div class="sponsor-qr">
+        <div class="sponsor-qr-image-wrapper">
+          <img src="/../sponsor/alipay.webp" alt=支付宝 width="200" />
+          <p class="sponsor-qr-name">支付宝</p>
+        </div>
+        <div class="sponsor-qr-image-wrapper">
+          <img src="/../sponsor/wechat.webp" alt=微信 width="200" />
+          <p class="sponsor-qr-name">微信</p>
+        </div>
+    </div>
+</div>
+        <div class="share-wrapper">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=VLA%20%E6%95%B0%E5%AD%A6%E5%BF%85%E5%A4%87%EF%BC%9A%E4%BB%8E%E7%9B%B4%E8%A7%89%E5%88%B0%E5%AE%9E%E4%BD%9C&amp;desc=%E6%88%91%E4%BB%AC%E6%89%80%E7%BB%8F%E5%8E%86%E7%9A%84%E6%97%A5%E5%B8%B8%E2%80%A6&amp;source=https%3A%2F%2Fveridianbyte.github.io" target="_blank" rel="noopener noreferrer" title="VLA 数学必备：从直觉到实作">
+      <div class="share-icon icon icon-qq">
+      </div>
+    </a>
+    <a href="javascript:;"  title="VLA 数学必备：从直觉到实作">
+      <div class="share-icon icon icon-weixin">
+          <div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hexo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div>
+      </div>
+    </a>
+</div>
+        <a data-aos="zoom-in" href="/2026/02/06/math_for_vla/#comments" class="article-comment-link">
+          <span class="post-comments-count waline-comment-count" data-path="/2026/02/06/math_for_vla/" itemprop="commentCount"></span>
+          留言
+        </a>
+        <span data-aos="zoom-in" class="article-visitor-link">
+          <span class="waline-pageview-count" data-path="/2026/02/06/math_for_vla/">0</span>
+          <em class="post-meta-item-text">阅读量</em>
+        </span>
+      
+      
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    <div class="article-nav-link-wrap right">
+        <img data-src="https://veridianbyte.github.io/covers/bg5.webp" data-sizes="auto" alt="XPlaneGymEnvs：X-Plane 12 深度强化学习环境详解" class="lazyload">
+      <a href="/2025/06/22/xplane_gym/" aria-label="后一篇: XPlaneGymEnvs：X-Plane 12 深度强化学习环境详解"  title="后一篇: XPlaneGymEnvs：X-Plane 12 深度强化学习环境详解"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          XPlaneGymEnvs：X-Plane 12 深度强化学习环境详解
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+        
+      <h2 class="comment-title">说些什么吧！</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            <div class="selector-item" data-selector="waline">
+              <span>waline</span>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+          <div class="comment waline-comment" data-aos="fade-up"
+            id="waline-comment">
+          </div>
+    </div>
+  </section>
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2026
+        <span class="footer-info-sep "></span>
+      白菜
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        15.1k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        01:05
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vla-%E6%95%B0%E5%AD%A6%E5%BF%85%E5%A4%87%E4%BB%8E%E7%9B%B4%E8%A7%89%E5%88%B0%E5%AE%9E%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text"> VLA 数学必备：从直觉到实作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text"> 目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E5%8F%98%E6%8D%A2"><span class="toc-number">1.2.</span> <span class="toc-text"> 1. 线性代数：空间与变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%A7%AF%E4%B8%8E%E7%9B%B8%E4%BC%BC%E5%BA%A6"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 内积与相似度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2-linear-layer"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 线性变换 (Linear Layer)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E7%A7%A9%E5%88%86%E8%A7%A3-lora"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 低秩分解 (LoRA)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#svd%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3"><span class="toc-number">1.2.4.</span> <span class="toc-text"> SVD（奇异值分解）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BE%AE%E7%A7%AF%E5%88%86%E4%B8%8E%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.</span> <span class="toc-text"> 2. 微积分与优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99-backpropagation-%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 链式法则 (Backpropagation 的核心)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%85%E5%8F%AF%E6%AF%94%E7%9F%A9%E9%98%B5-jacobian"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 雅可比矩阵 (Jacobian)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 梯度下降</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3d-%E5%87%A0%E4%BD%95%E4%B8%8E%E6%97%8B%E8%BD%AC"><span class="toc-number">1.4.</span> <span class="toc-text"> 3. 3D 几何与旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#se3-%E9%BD%90%E6%AC%A1%E5%8F%98%E6%8D%A2"><span class="toc-number">1.4.1.</span> <span class="toc-text"> SE(3) 齐次变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC%E8%A1%A8%E7%A4%BA%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 旋转表示：为什么不用欧拉角？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A6%82%E7%8E%87%E4%B8%8E%E4%BF%A1%E6%81%AF%E8%AE%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 4. 概率与信息论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vla-%E7%9A%84%E6%A6%82%E7%8E%87%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.5.1.</span> <span class="toc-text"> VLA 的概率本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kl-%E6%95%A3%E5%BA%A6"><span class="toc-number">1.5.2.</span> <span class="toc-text"> KL 散度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%86%B5"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 信息熵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elbo%E5%8F%98%E5%88%86%E4%B8%8B%E7%95%8C"><span class="toc-number">1.5.4.</span> <span class="toc-text"> ELBO（变分下界）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-transformer-%E6%95%B0%E5%AD%A6"><span class="toc-number">1.6.</span> <span class="toc-text"> 5. Transformer 数学</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%A9%E6%94%BE%E7%82%B9%E7%A7%AF%E6%B3%A8%E6%84%8F%E5%8A%9B"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 缩放点积注意力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flash-attention"><span class="toc-number">1.6.2.</span> <span class="toc-text"> Flash Attention</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E6%89%A9%E6%95%A3%E4%B8%8E-flow-matching"><span class="toc-number">1.7.</span> <span class="toc-text"> 6. 生成模型：扩散与 Flow Matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 为什么需要生成模型？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#diffusion%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.7.2.</span> <span class="toc-text"> Diffusion（扩散模型）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flow-matching%E6%B5%81%E5%8C%B9%E9%85%8D"><span class="toc-number">1.7.3.</span> <span class="toc-text"> Flow Matching（流匹配）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.8.</span> <span class="toc-text"> 7. 强化学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 贝尔曼方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 策略梯度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ppo-%E8%A3%81%E5%89%AA"><span class="toc-number">1.8.3.</span> <span class="toc-text"> PPO 裁剪</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A7%E5%88%B6"><span class="toc-number">1.9.</span> <span class="toc-text"> 8. 机器人控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pd-%E6%8E%A7%E5%88%B6"><span class="toc-number">1.9.1.</span> <span class="toc-text"> PD 控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 卡尔曼滤波</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E4%BD%9C%E5%B9%B3%E6%BB%91"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 动作平滑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E8%AE%AD%E7%BB%83%E5%B7%A5%E7%A8%8B"><span class="toc-number">1.10.</span> <span class="toc-text"> 9. 训练工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E8%A3%81%E5%89%AA"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 梯度裁剪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#adam-%E4%BC%98%E5%8C%96%E5%99%A8"><span class="toc-number">1.10.2.</span> <span class="toc-text"> Adam 优化器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#temperature-scaling"><span class="toc-number">1.10.3.</span> <span class="toc-text"> Temperature Scaling</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%91%A8%E9%80%9F%E6%88%90%E6%B8%85%E5%8D%95"><span class="toc-number">1.11.</span> <span class="toc-text"> 📅 2 周速成清单</span></a></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="白菜" class="lazyload">
+  <div class="sidebar-author-name">白菜</div>
+  <div class="sidebar-description">(❁´◡`❁)</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">6</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">7</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">12</div>
+  </div>
+</div>
+<div class="sidebar-social" >
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/VeridianByte itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/688602329 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+          <div class="sidebar-menu-icon icon ">
+                <img src="/images/EVA-00.png" alt="home icon" style="width: 1em;">
+          </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+          <div class="sidebar-menu-icon icon ">
+                <img src="/images/EVA-01.png" alt="archives icon" style="width: 1em;">
+          </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+          <div class="sidebar-menu-icon icon ">
+                <img src="/images/EVA-02.png" alt="about icon" style="width: 1em;">
+          </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+          <div class="sidebar-menu-icon icon ">
+                <img src="/images/gua.png" alt="friend icon" style="width: 1em;">
+          </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png"/>
+        </div>
+      </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+  <script>
+    var ALGOLIA_CONFIG = {
+      logo: "/images/algolia_logo.svg",
+      algolia: {
+        applicationID: "R21ZPJVBG2",
+        apiKey: "50bfe6cd0a6063e4764ebba7911db11d",
+        indexName: "my-hexo-blog",
+        hits: {
+          "per_page": parseInt("10")
+        },
+        labels: {
+          "input_placeholder": "搜索.....",
+          "hits_empty": "未发现与 「${query}」相关内容",
+          "hits_stats": "找到${hits}条结果（用时 ${time} ms）"
+        }
+      }
+    };
+  </script>
+  
+<script src="https://npm.webcache.cn/algoliasearch@4.17.1/dist/algoliasearch-lite.umd.js" integrity="sha384-xvLS0jfKuoREs7pqkRI&#x2F;OI8GcqohO5S+jQz7ZBtQXnsXmD+9jDOOY4cL6dCPzlrk" crossorigin="anonymous" defer></script>
+
+  
+<script src="https://npm.webcache.cn/@reimujs/instantsearch.js@4.57.0-beta.1/dist/instantsearch.production.min.js" integrity="sha384-aagKMe8nkqaP2DYQc8kkYOL5l+M5Q2WH&#x2F;Uhr4teOh0Ybp0RZj0kUSDm45qPikMjK" crossorigin="anonymous" defer></script>
+
+  
+<script src="/js/algolia_search.js" defer></script>
+
+
+  <script>
+    var setupFirework = () => {
+      if (!true || !window.matchMedia('(max-width: 768px)').matches) {
+        window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+      }
+    }
+  </script>
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js" integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8+pUoWX8n1rgq282T" crossorigin="anonymous" onload="setupFirework()" defer></script>
+
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "白菜",
+          title: "VLA 数学必备：从直觉到实作",
+          url: "https://veridianbyte.github.io/2026/02/06/math_for_vla/",
+          excerpt: "我们所经历的日常…",
+          description: "",
+          stripContent: "我们所经历的日常…   VLA 数学必备：从直觉到实作  这不是数学教材，而是&amp;quot;为了能看懂 VLA 论文、写出 loss、调好机器人&amp;quot;的实践清单。 每个公式都配有 大白话解释 + 在 VLA 里怎么用。 转自：https://github.com/sou350121/VLA-Handbook/blob/main/theory/foundation/math_for_vla.md    目录  1. 线性代数 2. 微积分与优化 3. 3D 几何与旋转 4. 概率与信息论 5.",
+          date: "Fri Feb 06 2026 06:06:06 GMT+0800",
+          updated: "Tue Feb 24 2026 13:14:34 GMT+0800",
+          cover: "https://veridianbyte.github.io/covers/bg6.webp",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      
+<script src="/js/tabs.js" data-pjax defer></script>
+
+        
+<script src="https://npm.webcache.cn/@zumer/snapdom@1.9.14/dist/snapdom.min.js" integrity="sha384-OEQ+fJp&#x2F;Mvi2uzBREXybtxryJvLytWapuHu4EE6LPwTKUwATYcc55tPPcZTzVcmx" crossorigin="anonymous" defer data-pjax></script>
+
+        
+<script src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js" integrity="sha384-VT1EeewTCEXgndcPMQ0PzV+uVFYjxFIjmAA7s5gcMX9t4Dt5TD+OVQIn7NJWIXn7" crossorigin="anonymous" defer data-pjax></script>
+
+      <script type="module" data-pjax>
+        (async () => {
+          const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+          const initPswp = (gallery, children) => {
+            if (_$$(`${gallery} ${children}`).length > 0) {
+              new PhotoSwipeLightbox({
+                gallery,
+                children,
+                pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+              }).init();
+            }
+          }
+          const pswp = () => {
+            initPswp('.article-entry', 'a.article-gallery-item');
+            initPswp('.article-gallery', 'a.article-gallery-item');
+          }
+          pswp();
+        })();
+      </script>
+        
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["waline"];
+  var commentConfig = {
+    waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.mjs';
+        const walineIntegrity = 'sha384-9sbqJjrfGjbkI6/PI4nU/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH/KinBEAZII/5';
+
+        const module = await safeImport(walineCdn, walineIntegrity);
+        walineInit = module.init;
+
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'https://projects-ten-beige.vercel.app/',
+          lang: document.documentElement.lang || 'en',
+          locale: {},
+          emoji: ["https://unpkg.com/@waline/emojis@1.2.0/weibo","https://unpkg.com/@waline/emojis@1.2.0/alus","https://unpkg.com/@waline/emojis@1.2.0/bilibili","https://unpkg.com/@waline/emojis@1.2.0/qq","https://unpkg.com/@waline/emojis@1.2.0/tieba","https://unpkg.com/@waline/emojis@1.2.0/tw-emoji"],
+          meta: ["nick","mail","link"],
+          requiredMeta: ["nick","mail"],
+          wordLimit: JSON.parse('0'),
+          comment: true,
+          pageSize: JSON.parse('10'),
+          dark: 'html[data-theme="dark"]',
+          pageview: JSON.parse('true'),
+        });
+      }
+    },
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.12.0' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+    <script>
+      var setupAPlayer = () => {
+        if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+          if (window.matchMedia('(max-width: 959px)').matches) {
+            const meting = _$('meting-js');
+            if (meting) {
+              meting.setAttribute('fixed', 'true');
+              const aside = meting.parentNode?.parentNode;
+              if (aside?.tagName === 'ASIDE') {
+                meting.parentNode.removeChild(meting);
+                document.body.appendChild(meting);
+              }
+            }
+          }
+        }
+      };
+        var meting_api = "https://api.qijieya.cn/meting/?server=:server&type=:type&id=:id";
+    </script>
+  
+<script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous" defer onload="setupAPlayer()"></script>
+
+    
+<script src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js" integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8+0maanw1S&#x2F;IyB+Y4JG+ZDU7GpKE8" crossorigin="anonymous" defer></script>
+
+
+
+  </body>
+  </html>
